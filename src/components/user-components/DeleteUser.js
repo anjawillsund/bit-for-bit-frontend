@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTokenContext } from '../contexts/TokenContext.js'
-import { MovieContext } from '../contexts/MovieContext.js'
+import { PuzzleContext } from '../contexts/PuzzleContext.js'
 import Button from '../Button.js'
 
 /**
@@ -14,7 +14,7 @@ const DeleteUser = () => {
 
 	const fetchWithToken = useTokenContext()
 
-	const { resetState } = useContext(MovieContext)
+	const { resetState } = useContext(PuzzleContext)
 
 	const [errorMessage, setErrorMessage] = useState('')
 
@@ -23,8 +23,7 @@ const DeleteUser = () => {
 	 */
 	const handleDeleteAccount = async () => {
 		try {
-			// const response = await fetchWithToken('http://localhost:5080/user/delete-user', {
-			const response = await fetchWithToken('https://cscloud7-230.lnu.se/pixflixr-server/user/delete-user', {
+			const response = await fetchWithToken('http://localhost:8090/delete-user', {
 				method: 'GET'
 			})
 			if (response.ok) {
