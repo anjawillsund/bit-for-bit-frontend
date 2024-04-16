@@ -25,7 +25,7 @@ const TokenContextProvider = ({ children }) => {
 
     // Add the token to the request headers
     const headers = {
-			'Content-Type': 'application/x-www-form-urlencoded',
+			'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     }
 
