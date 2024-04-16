@@ -42,36 +42,43 @@ const CreateUser = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      // const response = await fetch('http://localhost:5080/user/create', {
-      const response = await fetch('https://cscloud7-230.lnu.se/pixflixr-server/user/create', {
+      const response = await fetch('http://localhost:8090/create', {
         method: 'POST',
         mode: 'cors',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/json'
+
         },
-        body: `username=${state.username}&password=${state.password}`
+        body: JSON.stringify({
+          username: state.username,
+          password: state.password
+        }) 
       })
+      console.log(response)
+
       if (response.ok) {
         console.log('User created')
         const message = await response.text()
         navigate('/', { state: { message } })
       } else {
         const errorText = await response.text()
-        if (errorText === 'User validation failed: password: Path `password` is required.') {
-          const error = 'The password must contain at least 10 characters.'
-          console.log(error)
-          setErrorMessage(error)
-        } else if (errorText === 'User validation failed: username: Path `username` is required.') {
-          const error = 'The username must contain at least one character.'
-          console.log(error)
-          setErrorMessage(error)
-        } else if (errorText === 'User validation failed: username: Path `username` is required., password: Path `password` is required.') {
-          const error = 'The username must contain at least one character and the password must contain at least ten characters.'
+        const errorMessage = JSON.parse(errorText).message
+        let error
+        if (errorMessage === 'The password must contain at least 10 characters.' || errorMessage === 'The password must not contain more than 2000 characters.' || errorMessage === 'User validation failed: password: Path `password` is required.') {
+          error = 'Lösenordet måste innehålla mellan 10 och 2 000 tecken.'
+        } else if (errorMessage === 'User validation failed: username: Path `username` is required.' || errorMessage === 'The username must not contain more than 50 characters.') {
+          error = 'Lösenordet måste innehålla mellan 1 och 50 tecken.'
+        } else if (errorMessage === 'User validation failed: username: Path `username` is required., password: Path `password` is required.') {
+          error = 'Användarnamnet måste innehålla minst ett tecken och lösenordet måste innehålla minst tio tecken.'
+        } else if (errorMessage === 'The username is not available.') {
+          error = 'Användarnamnet är upptaget.'
+        }
+        if (error) {
           console.log(error)
           setErrorMessage(error)
         } else {
-          console.log(errorText)
-          setErrorMessage(errorText)
+          console.log(errorMessage)
+          setErrorMessage('Ett okänt fel uppstod. Försök igen.')
         }
       }
     } catch (error) {
@@ -82,14 +89,13 @@ const CreateUser = () => {
   return (
     <div className='create-user-form'>
       <h1 className='logo'>
-        <span className='coral'>Pix</span>
-        <span className='blue'>Flixr</span>
+        <span className='coral'>Bit För Bit</span>
       </h1>
       <div className='form-container'>
         <form onSubmit={handleSubmit}>
-          <h2>Create an account to start pixing flix!</h2>
+          <h2>Skapa ett konto</h2>
           <div className='form-control'>
-            <label>Username</label>
+            <label>Användarnamn</label>
             <input
               type='text'
               name='username'
@@ -98,7 +104,7 @@ const CreateUser = () => {
             />
           </div>
           <div className='form-control'>
-            <label>Password</label>
+            <label>Lösenord</label>
             <input
               type='password'
               name='password'
@@ -107,10 +113,10 @@ const CreateUser = () => {
             />
           </div>
           <div className='form-control'>
-            <button type='submit'>Create</button>
+            <button type='submit'>Skapa</button>
           </div>
         </form>
-        <Link to='/'><Button className='go-to-login-button' buttonText='Back to login' /></Link>
+        <Link to='/'><Button className='go-to-login-button' buttonText='Tillbaka till startsidan' /></Link>
         <div>
           {errorMessage ? (
             <p className='system-message'>{errorMessage}</p>
