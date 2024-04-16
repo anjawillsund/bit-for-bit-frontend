@@ -14,7 +14,7 @@ const StartPage = () => {
   let location = useLocation()
   const [message, setMessage] = useState('')
 
-  const { setIsUserActive } = useContext(PuzzleContext)
+  const { setIsUserActive, puzzles, setPuzzles } = useContext(PuzzleContext)
 
   let navigate = useNavigate()
 
@@ -71,23 +71,26 @@ const StartPage = () => {
     event.preventDefault()
     setIsUserActive(true)
     try {
-      const response = await fetch(`${process.env.BASE_URL}/login`, {
-        // const response = await fetch('https://cscloud7-230.lnu.se/pixflixr-server/user/login', {
+      const response = await fetch('http://localhost:8090/login', {
         method: 'POST',
         mode: 'cors',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/json'
         },
-        body: `username=${state.username}&password=${state.password}`
+        body: JSON.stringify({
+          username: state.username,
+          password: state.password
+        }) 
       })
       if (response.ok) {
-        const { message, token, groups } = await response.json()
+        const { message, token } = await response.json()
         localStorage.setItem('token', token)
-        navigate('/user-profile', { state: { message, groups } })
+        setPuzzles(puzzles)
+        navigate('/my-puzzles', { state: { message, puzzles } })
       } else {
         const errorMessage = await response.text()
         console.log(errorMessage)
-        setErrorMessage(errorMessage)
+        setErrorMessage(JSON.parse(errorMessage).message)
       }
     } catch (error) {
       console.log(error)
