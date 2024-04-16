@@ -14,7 +14,7 @@ const StartPage = () => {
   let location = useLocation()
   const [message, setMessage] = useState('')
 
-  const { setIsUserActive, puzzles, setPuzzles } = useContext(PuzzleContext)
+  const { setIsUserActive, setPuzzles, setIsLoadingPuzzles } = useContext(PuzzleContext)
 
   let navigate = useNavigate()
 
@@ -69,7 +69,9 @@ const StartPage = () => {
    */
   const handleSubmit = async (event) => {
     event.preventDefault()
+    setPuzzles([])
     setIsUserActive(true)
+    setIsLoadingPuzzles(true)
     try {
       const response = await fetch('http://localhost:8090/login', {
         method: 'POST',
@@ -85,8 +87,7 @@ const StartPage = () => {
       if (response.ok) {
         const { message, token } = await response.json()
         localStorage.setItem('token', token)
-        setPuzzles(puzzles)
-        navigate('/my-puzzles', { state: { message, puzzles } })
+        navigate('/my-puzzles', { state: { message } })
       } else {
         const errorMessage = await response.text()
         console.log(errorMessage)
