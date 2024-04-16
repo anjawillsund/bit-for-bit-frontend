@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { TokenContextProvider } from './components/contexts/TokenContext'
+import CreateUser from './components/user-components/CreateUser'
+import StartPage from './components/StartPage'
+import PuzzleContextProvider from './components/contexts/PuzzleContext'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <Router basename={'/bit-for-bit'}>
+    <TokenContextProvider>
+      <PuzzleContextProvider>
+        <div className='App'>
+          <Routes>
+            <Route exact path='/' element={<StartPage />} />
+            <Route path='/create-user' element={<CreateUser />} />
+          </Routes>
+        </div>
+      </PuzzleContextProvider>
+    </TokenContextProvider>
+  </Router>
 }
 
-export default App;
+export default App
