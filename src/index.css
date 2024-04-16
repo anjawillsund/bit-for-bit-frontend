@@ -5,9 +5,479 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #F2F2F2;
+  background-color: #222222;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.App {
+  text-align: center;
+  background-color: #222222;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  position: relative;
+}
+
+/* Form pages */
+h1.logo {
+  font-size: 6rem;
+  margin: 4rem 0 0 0;
+  padding: 0;
+}
+
+.coral {
+  color: #ff6666;
+}
+
+.blue {
+  color: rgb(69, 143, 230);
+}
+
+.start-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.create-user-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.form-container h2 {
+  font-size: 1.7rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: normal;
+  margin: 20px 0;
+  padding: 0;
+}
+
+.form-container {
+  background-color: rgb(69, 143, 230);
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: auto;
+  padding: 20px;
+  width: 320px;
+  margin: 1rem;
+}
+
+.form-control {
+  color: #F2F2F2;
+  font-weight: bold;
+  margin: 5px 0;
+  padding: 0;
+  display: flex;
+  justify-content: left;
+}
+
+.form-control button {
+  color: rgb(36, 85, 141);
+  height: 40px;
+  font-size: 1.5rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: white;
+  width: 100%;
+  border-radius: 15px;
+  border: 2px solid rgb(36, 85, 141);
+}
+
+input {
+  background-color: #F2F2F2;
+  border: none;
+  border-radius: 15px;
+  box-sizing: border-box;
+  height: 30px;
+  margin: 2px 10px 0;
+  padding: 0 10px;
+  width: 70%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.9rem;
+}
+
+.join-group input {
+  padding-top: 10px;
+  width: 70%;
+  margin: 10px 0 0 0;
+  height: 60px;
+  padding: 2px 5px;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.join-group button {
+  background-color: rgb(69, 143, 230);
+  border-radius: 15px;
+  font-size: 2rem;
+  padding: 10px;
+  margin-top: 10px;
+  height: 60px;
+  width:70%;
+  color: #F2F2F2;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.start-page .form-container input:focus {
+  outline: 2px solid rgb(19, 58, 102);
+  outline-offset: -4px;
+}
+
+.form-container label {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: block;
+  margin: 6px 0 0 0;
+  padding: 0;
+  width: 35%;
+  font-size: 1.1rem;
+}
+
+.form-container Button {
+  color: rgb(36, 85, 141);
+  margin: 5px 0;
+  height: 40px;
+  font-size: 1.5rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: white;
+  padding: 0;
+  width: 100%;
+  border-radius: 15px;
+  border: 2px solid rgb(36, 85, 141);
+}
+
+.create-user-form .form-container {
+  background-color: #ff9999;
+}
+
+.create-user-form .form-container Button {
+  background-color: white;
+  border: 2px solid #ff6666;
+  color: #ff6666;
+}
+
+.create-user-form .form-container input:focus {
+  outline: 2px solid #ff6666;
+  outline-offset: -4px;
+}
+
+/* Group page */
+.show-groups ul {
+  padding: 0;
+  margin: 10px 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.show-groups ul li {
+  margin: 0;
+}
+
+.show-groups ul li Button {
+  text-align: left;
+  background-color: #F2F2F2;
+  color: rgb(69, 143, 230);
+}
+
+.choose-group {
+  position: absolute;
+}
+
+.choose-group Button {
+  align-items: center;
+  background-color: rgb(69, 143, 230);
+  border-radius: 15px;
+  font-size: 2rem;
+  padding: 10px;
+  margin-bottom: 10px;
+  height: 60px;
+  width: 100%;
+  color: #F2F2F2;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* System message */
+.system-message {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.4rem;
+}
+
+/* Navigation bar */
+.navigation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  z-index: 2;
+  background-color: #222222;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-bar {
+  padding: 10px 25px;
+}
+
+.settings-bar h1.logo-small {
+  font-size: 2rem;
+}
+
+.settings-bar ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  justify-content: space-between;
+}
+
+.settings {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Matching options area */
+.matching-options-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Matching options */
+.matching-options-area ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.matching-options-area ul li {
+  margin: 0 10px;
+}
+
+.matching-options-area ul li a {
+  padding: 10px;
+}
+
+/* Content area */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 160px;
+}
+
+.suggestion-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  height: 100%;
+}
+
+/* Movie card */
+.movie-cover {
+  position: relative;
+  width: 100%;
+  max-width: 90vw;
+  max-height: calc(100vh - 160px - 140px);
+}
+
+.movie-cover img {
+  max-width: 100%;
+  max-height: calc(100vh - 160px - 140px);
+  display: block;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+  padding: 5%;
+  padding-top: 40%;
+  text-align: left;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.overlay h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.overlay h4 {
+  font-weight: 500;
+  margin: 0;
+}
+
+.overlay h5 {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.overlay ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.overlay ul li {
+  display: inline-block;
+  margin-right: 20px;
+  margin-left: 0;
+}
+
+#yellow {
+  color: #FFD700;
+}
+
+/* Response button area */
+.response-button-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: #222222;
+  max-width: 450px;
+  position: fixed;
+  bottom: 0;
+  height: 140px;
+}
+
+/* Response button */
+.response-button {
+  display: flex;
+  background-position: center;
+  width: 5rem;
+  height: 5rem;
+  background-color: #F2F2F2;
+  border-radius: 50%;
+  cursor: pointer;
+  background-repeat: no-repeat;
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Matches */
+.matches {
+  width: 90%;
+  overflow: auto;
+  padding-bottom: 5%;
+}
+
+.matches p {
+  font-size: 1.5rem;
+  width: 100%;
+  margin-top: 50px;
+  padding: 0;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.matches ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-start;
+}
+
+.matches ul li {
+  display: inline-block;
+  margin: 0 3px;
+  padding: 1% 0;
+  width: calc(33.33% - 6px);
+  height: auto;
+}
+
+.matches ul li img {
+  display: flex;
+  height: auto;
+  width: 100%;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #333;
+}
+
+.settings-page {
+  position: relative;
+  margin-top: 0;
+  padding-top: 100px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-page button {
+  background-color: rgb(69, 143, 230);
+  border-radius: 15px;
+  font-size: 2rem;
+  padding: 10px;
+  min-width: 250px;
+  margin-bottom: 10px;
+  height: 60px;
+  width: 100%;
+  color: #F2F2F2;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#delete-button {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 10px;
+}
+
+#delete-button button {
+  background-color: #be3636;
+}
+
+/* Cursor */
+.active-link {
+  cursor: pointer;
+}
+
+.inactive-link {
+  cursor: default;
 }
