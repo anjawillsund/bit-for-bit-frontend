@@ -25,20 +25,22 @@ const SinglePuzzle = () => {
     }
 
     return (
-        <div>
-            {puzzle.imageUrl ? (
-              <img src={puzzle.imageUrl} alt={puzzle.title} />
-              ) : (
-                <img src={nullPuzzleImage} alt={''} />
-              )
-            }
-            <h1>{puzzle.title}</h1>
-            <p>Antal bitar: {puzzle.piecesNumber ? (puzzle.piecesNumber) : ( '-' )}</p>
-            <p>Tillverkare: {puzzle.manufacturer ? (puzzle.manufacturer) : ('-')}</p>
-            <p>Privat anteckning: {puzzle.privateNote ? (puzzle.privateNote) : ('-')}</p>
-            <p>Delad anteckning: {puzzle.sharedNote ? (puzzle.sharedNote) : ('-')}</p>
-            <p>Storlek i cm: {puzzle.sizeWidth ? (`${puzzle.sizeWidth} x ${puzzle.sizeHeight}`) : ('-')}</p>
-            <p>Senast lagt: {puzzle.lastPlayed ? (puzzle.lastPlayed) : ('-')}</p>
+        <div className='puzzle-area'>
+            <div className='puzzle-info'>
+                {puzzle.imageUrl ? (
+                <img src={puzzle.imageUrl} alt={puzzle.title} />
+                ) : (
+                    <img src={nullPuzzleImage} alt={''} />
+                )
+                }
+                <h1>{puzzle.title}</h1>
+                <p>Antal bitar: {puzzle.piecesNumber ? (puzzle.piecesNumber) : ( '-' )}</p>
+                <p>Tillverkare: {puzzle.manufacturer ? (puzzle.manufacturer) : ('-')}</p>
+                <p>Privat anteckning: {puzzle.privateNote ? (puzzle.privateNote) : ('-')}</p>
+                <p>Delad anteckning: {puzzle.sharedNote ? (puzzle.sharedNote) : ('-')}</p>
+                <p>Storlek i cm: {puzzle.sizeWidth ? (`${puzzle.sizeWidth} x ${puzzle.sizeHeight}`) : ('-')}</p>
+                <p>Senast lagt: {puzzle.lastPlayed ? (puzzle.lastPlayed) : ('-')}</p>
+            </div>
         </div>
     )
 }
