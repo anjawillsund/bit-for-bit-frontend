@@ -267,6 +267,10 @@ input {
   object-fit: contain;
 }
 
+.heavy {
+  font-weight: 600;
+}
+
 /* Puzzles */
 .puzzles {
   width: 90%;
