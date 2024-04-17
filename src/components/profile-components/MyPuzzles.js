@@ -2,8 +2,9 @@ import Button from '../Button'
 import React from 'react'
 import { useContext, useEffect } from 'react'
 import { PuzzleContext } from '../contexts/PuzzleContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { TokenContext } from '../contexts/TokenContext'
+import nullPuzzleImage from '../../assets/images/null-puzzle.jpeg'
 
 /**
  * Renders a list of the user's puzzles.
@@ -51,22 +52,26 @@ const MyPuzzles = () => {
         buttonText='Logout'
       />
       {isLoadingPuzzles ? (
-        <p>Loading...</p>
+        <p>Laddar...</p>
       ) : (
         <ul>
           {puzzlesArray.length > 0 ? (puzzlesArray.map(puzzle => (
             <li key={puzzle._id} className="puzzle-item">
-              <a href={`/puzzle/${puzzle._id}`}>
-              <img src={puzzle.imageUrl} alt={''} />
+              <Link to={`/puzzles/${puzzle.id}`}>
+              {puzzle.imageUrl ? (
+              <img src={puzzle.imageUrl} alt={puzzle.title} />
+              ) : (
+                <img src={nullPuzzleImage} alt={''} />
+              )}
               <div className="text-content">
                 <h3>{puzzle.title}</h3>
-                <p>Pieces: {puzzle.piecesNumber}</p>
+                <p>Antal bitar: {puzzle.piecesNumber ? (puzzle.piecesNumber) : ('-')}</p>
               </div>
-              </a>
+              </Link>
             </li>
           ))
           ) : (
-            <p>No puzzles to display</p>
+            <p>Inga pussel att visa</p>
           )}
         </ul>
       )}
