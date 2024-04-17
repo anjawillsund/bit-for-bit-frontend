@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
+import { TokenContextProvider } from './components/contexts/TokenContext'
 import CreateUser from './components/user-components/CreateUser'
 import MyPuzzles from './components/profile-components/MyPuzzles'
-import StartPage from './components/StartPage'
-import { TokenContextProvider } from './components/contexts/TokenContext'
 import PuzzleContextProvider from './components/contexts/PuzzleContext'
+import SinglePuzzle from './components/puzzle-components/SinglePuzzle'
+import StartPage from './components/StartPage'
 
 function App() {
   /**
@@ -32,6 +33,7 @@ function App() {
                   <div className='content'>
                     <Routes>
                       <Route path='/my-puzzles' element={<MyPuzzles />} />
+                      <Route path='/puzzles/:puzzleId' element={<SinglePuzzle />} />
                     </Routes>
                   </div>
                 </div>
