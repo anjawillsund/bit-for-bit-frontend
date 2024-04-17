@@ -70,7 +70,6 @@ const StartPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     setPuzzles([])
-    setIsUserActive(true)
     setIsLoadingPuzzles(true)
     try {
       const response = await fetch('http://localhost:8090/login', {
@@ -85,6 +84,7 @@ const StartPage = () => {
         }) 
       })
       if (response.ok) {
+        setIsUserActive(true)
         const { message, token } = await response.json()
         localStorage.setItem('token', token)
         navigate('/my-puzzles', { state: { message } })
