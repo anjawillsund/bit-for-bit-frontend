@@ -320,52 +320,6 @@ input {
   object-fit: contain;
 }
 
-/* Overlay */
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
-  padding: 5%;
-  padding-top: 40%;
-  text-align: left;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.overlay h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 0;
-}
-
-.overlay h4 {
-  font-weight: 500;
-  margin: 0;
-}
-
-.overlay h5 {
-  font-size: 0.8rem;
-  margin: 0;
-}
-
-.overlay ul {
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-
-.overlay ul li {
-  display: inline-block;
-  margin-right: 20px;
-  margin-left: 0;
-}
-
-#yellow {
-  color: #FFD700;
-}
-
 /* Response button area */
 .response-button-area {
   display: flex;
