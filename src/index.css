@@ -397,14 +397,14 @@ button:active {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-/* Matches */
-.matches {
+/* Puzzles */
+.puzzles {
   width: 90%;
   overflow: auto;
   padding-bottom: 5%;
 }
 
-.matches p {
+.puzzles p {
   font-size: 1.5rem;
   width: 100%;
   margin-top: 50px;
@@ -414,7 +414,7 @@ button:active {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
-.matches ul {
+.puzzles ul {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
@@ -423,7 +423,7 @@ button:active {
   justify-content: flex-start;
 }
 
-.matches ul li {
+.puzzles ul li {
   flex: 0 0 48%; /* each li takes up 50% of the flex container width */
   margin: 2px;
   cursor: pointer; /* makes the li clickable */
@@ -433,7 +433,7 @@ button:active {
   overflow: hidden;
 }
 
-.matches ul li img {
+.puzzles ul li img {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -449,28 +449,28 @@ button:active {
   color: #333; */
 }
 
-.matches ul li .text-content {
+.puzzles ul li .text-content {
   padding: 8px; /* adds some padding around the text */
   text-align: left; /* centers the text horizontally */
 }
 
-.matches ul li .text-content {
+.puzzles ul li .text-content {
   padding: 8px; /* adds some padding around the text */
   text-align: left; /* centers the text horizontally */
 }
 
-.matches ul li h3 {
+.puzzles ul li h3 {
   font-size: 0.8rem; /* sets the font size of the title */
   margin: 0; /* removes the default margin of the h3 element */
 }
 
-.matches ul li p {
+.puzzles ul li p {
   font-size: 0.8rem; /* sets the font size of the title */
   margin: 0; /* removes the default margin of the h3 element */
   text-align: left
 }
 
-.matches a, .matches a:visited {
+.puzzles a, .puzzles a:visited {
   text-decoration: none;
   color: #3a3a3a;
 }
