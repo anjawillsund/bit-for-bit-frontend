@@ -5,8 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #F2F2F2;
-  background-color: #222222;
+  color: #222222;
+  background-color: #fafafa;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -20,7 +20,7 @@ code {
 
 .App {
   text-align: center;
-  background-color: #222222;
+  background-color: #fafafa;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -424,20 +424,55 @@ button:active {
 }
 
 .matches ul li {
-  display: inline-block;
-  margin: 0 3px;
-  padding: 1% 0;
-  width: calc(33.33% - 6px);
-  height: auto;
+  flex: 0 0 48%; /* each li takes up 50% of the flex container width */
+  margin: 2px;
+  cursor: pointer; /* makes the li clickable */
+  background: #fff; /* optional: background color for the li */
+  border-radius: 5px; /* optional: border radius for the li */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* optional: adds shadow for better visibility */
+  overflow: hidden;
 }
 
 .matches ul li img {
-  display: flex;
-  height: auto;
   width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 15px;
   text-decoration: none;
-  color: #333;
+  color: #333; */
+}
+
+.matches ul li .text-content {
+  padding: 8px; /* adds some padding around the text */
+  text-align: left; /* centers the text horizontally */
+}
+
+.matches ul li .text-content {
+  padding: 8px; /* adds some padding around the text */
+  text-align: left; /* centers the text horizontally */
+}
+
+.matches ul li h3 {
+  font-size: 0.8rem; /* sets the font size of the title */
+  margin: 0; /* removes the default margin of the h3 element */
+}
+
+.matches ul li p {
+  font-size: 0.8rem; /* sets the font size of the title */
+  margin: 0; /* removes the default margin of the h3 element */
+  text-align: left
+}
+
+.matches a, .matches a:visited {
+  text-decoration: none;
+  color: #3a3a3a;
 }
 
 .settings-page {
