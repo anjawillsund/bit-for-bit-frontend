@@ -56,7 +56,7 @@ const MyPuzzles = () => {
       ) : (
         <ul>
           {puzzlesArray.length > 0 ? (puzzlesArray.map(puzzle => (
-            <li key={puzzle._id} className="puzzle-item">
+            <li key={puzzle.id} className="puzzle-item">
               <Link to={`/puzzles/${puzzle.id}`}>
               {puzzle.imageUrl ? (
               <img src={puzzle.imageUrl} alt={puzzle.title} />
