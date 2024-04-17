@@ -33,13 +33,13 @@ const SinglePuzzle = () => {
                     <img src={nullPuzzleImage} alt={''} />
                 )
                 }
-                <h1>{puzzle.title}</h1>
-                <p>Antal bitar: {puzzle.piecesNumber ? (puzzle.piecesNumber) : ( '-' )}</p>
-                <p>Tillverkare: {puzzle.manufacturer ? (puzzle.manufacturer) : ('-')}</p>
-                <p>Privat anteckning: {puzzle.privateNote ? (puzzle.privateNote) : ('-')}</p>
-                <p>Delad anteckning: {puzzle.sharedNote ? (puzzle.sharedNote) : ('-')}</p>
-                <p>Storlek i cm: {puzzle.sizeWidth ? (`${puzzle.sizeWidth} x ${puzzle.sizeHeight}`) : ('-')}</p>
-                <p>Senast lagt: {puzzle.lastPlayed ? (puzzle.lastPlayed) : ('-')}</p>
+                <h3>{puzzle.title}</h3>
+                <p><span className='heavy'>Antal bitar:</span> {puzzle.piecesNumber ? (puzzle.piecesNumber) : ( '-' )}</p>
+                <p><span className='heavy'>Tillverkare:</span> {puzzle.manufacturer ? (puzzle.manufacturer) : ('-')}</p>
+                <p><span className='heavy'>Privat anteckning:</span> {puzzle.privateNote ? (puzzle.privateNote) : ('-')}</p>
+                <p><span className='heavy'>Delad anteckning:</span> {puzzle.sharedNote ? (puzzle.sharedNote) : ('-')}</p>
+                <p><span className='heavy'>Storlek i cm:</span> {puzzle.sizeWidth ? (`${puzzle.sizeWidth} x ${puzzle.sizeHeight}`) : ('-')}</p>
+                <p><span className='heavy'>Senast lagt:</span> {puzzle.lastPlayed ? (puzzle.lastPlayed) : ('-')}</p>
             </div>
         </div>
     )
