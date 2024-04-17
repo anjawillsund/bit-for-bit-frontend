@@ -45,11 +45,19 @@ const MyPuzzles = () => {
     }
   }
 
+  const handleAddPuzzle = () => {
+    navigate('/add-puzzle')
+  }
+
   return (
     <div className='puzzles'>
       <Button
         onClick={handleLogout}
         buttonText='Logout'
+      />
+      <Button
+        onClick={handleAddPuzzle}
+        buttonText='Lägg till pussel'
       />
       {isLoadingPuzzles ? (
         <p>Laddar...</p>
