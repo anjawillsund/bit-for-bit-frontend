@@ -1,26 +1,44 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'  // Styles for the date picker
-import { TokenContext } from '../contexts/TokenContext'
+import { useNavigate } from 'react-router-dom'
 
 const AddPuzzle = () => {
-  const fetchWithToken = useContext(TokenContext)
-  const [formData, setFormData] = useState({
+  const navigate = useNavigate()
+
+  const initialFormData = {
     image: '',
     title: '',
     piecesNumber: '',
     height: '',
     width: '',
     manufacturer: '',
-    lastPlayed: new Date(),
+    lastPlayed: '',
     location: '',
     complete: true,
     missingPiecesNumber: '',
     privateNote: '',
     sharedNote: '',
     isLentOut: false,
-    lentOutTo: ''
-  })
+    lentOutToString: '',
+    isPrivate: true
+  }
+
+  const [formData, setFormData] = useState(initialFormData)
+
+  const createFormData = () => {
+    const data = new FormData()
+    Object.keys(formData).forEach(key => {
+      if (formData[key] != null) {
+        if (key === 'image') {
+          data.append(key, document.querySelector('input[type="file"]').files[0])
+        } else {
+          data.append(key, formData[key])
+        }
+      }
+    })
+    return data
+  }
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -38,15 +56,19 @@ const AddPuzzle = () => {
   }
 
   const handleSubmit = async (event) => {
+    const formDataInput = createFormData();
     event.preventDefault()
     try {
-      const response = await fetchWithToken('http://localhost:8090/my/puzzles', {
+      const token = localStorage.getItem('token')
+      const response = await fetch('http://localhost:8090/my/puzzles', {
         method: 'POST',
-        body: {
-          ...formData
-        }
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        body: formDataInput
       })
       if (response.ok) {
+        navigate('/my-puzzles')
         console.log('Puzzle added')
       } else {
         console.log('Could not add puzzle')
@@ -59,65 +81,69 @@ const AddPuzzle = () => {
   return (
     <form className="add-puzzle-form" onSubmit={handleSubmit}>
       <label>
-        Image:
+        Bild:
         <input type="file" name="image" onChange={handleChange} accept="image/*" />
       </label>
       <label>
-        Title:
+        Titel:
         <input type="text" name="title" value={formData.title} onChange={handleChange} />
       </label>
       <label>
-        Number of Pieces:
+        Antal bitar:
         <input type="text" name="piecesNumber" value={formData.piecesNumber} onChange={handleChange} />
       </label>
       <label>
-        Height (cm):
+        Höjd (cm):
         <input type="text" name="height" value={formData.height} onChange={handleChange} />
       </label>
       <label>
-        Width (cm):
+        Bredd (cm):
         <input type="text" name="width" value={formData.width} onChange={handleChange} />
       </label>
       <label>
-        Manufacturer:
+        Tillverkare:
         <input type="text" name="manufacturer" value={formData.manufacturer} onChange={handleChange} />
       </label>
       <label>
-        Last Played:
+        Senast lagt:
         <DatePicker selected={formData.lastPlayed} onChange={handleDateChange} />
       </label>
       <label>
-        Location:
+        Plats:
         <input type="text" name="location" value={formData.location} onChange={handleChange} />
       </label>
       <label>
-        Complete:
+        Komplett:
         <input type="checkbox" name="complete" checked={formData.complete} onChange={handleChange} />
       </label>
-      {formData.complete && (
+      {!formData.complete && (
         <label>
-          Number of Missing Pieces:
+          Antal saknade bitar:
           <input type="text" name="missingPiecesNumber" value={formData.missingPiecesNumber} onChange={handleChange} />
         </label>
       )}
       <label>
-        Private Note:
+        Privat anteckning:
         <input type="text" name="privateNote" value={formData.privateNote} onChange={handleChange} />
       </label>
       <label>
-        Shared Note:
+        Delad anteckning:
         <input type="text" name="sharedNote" value={formData.sharedNote} onChange={handleChange} />
       </label>
       <label>
-        Is Lent Out:
+        Är utlånat:
         <input type="checkbox" name="isLentOut" checked={formData.isLentOut} onChange={handleChange} />
       </label>
       {formData.isLentOut && (
         <label>
-          Lent Out To:
-          <input type="text" name="lentOutTo" value={formData.lentOutTo} onChange={handleChange} />
+          Utlånat till:
+          <input type="text" name="lentOutToString" value={formData.lentOutToString} onChange={handleChange} />
         </label>
       )}
+      <label>
+        Är privat:
+        <input type="checkbox" name="isPrivate" checked={formData.isPrivate} onChange={handleChange} />
+      </label>
       <button type="submit">Add Puzzle</button>
     </form>
   )
