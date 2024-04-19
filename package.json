@@ -2,6 +2,7 @@
   "name": "bit-for-bit-frontend",
   "version": "0.1.0",
   "description": "1DV50E - Independent Project - Bit För Bit",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
