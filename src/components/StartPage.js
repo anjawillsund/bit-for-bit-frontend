@@ -72,7 +72,7 @@ const StartPage = () => {
     setPuzzles([])
     setIsLoadingPuzzles(true)
     try {
-      const response = await fetch('http://192.168.68.104:8090/login', {
+      const response = await fetch('https://cscloud7-156.lnu.se/bfb-backend/login', {
         method: 'POST',
         mode: 'cors',
         headers: {
