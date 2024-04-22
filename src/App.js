@@ -19,12 +19,12 @@ function App() {
     return !!token;
   }
 
-  return <Router basename={'/bit-for-bit'}>
+  return <Router basename={'/'}>
     <TokenContextProvider>
       <PuzzleContextProvider>
         <div className='App'>
           <Routes>
-            <Route exact path='/' element={<StartPage />} />
+            <Route path='/' element={<StartPage />} />
             <Route path='/create-user' element={<CreateUser />} />
             <Route path='/*' element={isLoggedIn() ?
               <>
