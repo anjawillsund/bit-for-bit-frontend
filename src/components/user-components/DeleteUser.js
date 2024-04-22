@@ -23,7 +23,7 @@ const DeleteUser = () => {
 	 */
 	const handleDeleteAccount = async () => {
 		try {
-			const response = await fetchWithToken('http://localhost:8090/delete-user', {
+			const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/delete-user`, {
 				method: 'GET'
 			})
 			if (response.ok) {

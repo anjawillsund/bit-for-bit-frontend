@@ -72,7 +72,7 @@ const StartPage = () => {
     setPuzzles([])
     setIsLoadingPuzzles(true)
     try {
-      const response = await fetch('https://cscloud7-156.lnu.se/bfb-backend/login', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
         method: 'POST',
         mode: 'cors',
         headers: {

@@ -11,7 +11,7 @@ const SinglePuzzle = () => {
     useEffect(() => {
         // Simulate fetching puzzle data based on `puzzleId`
         const fetchPuzzle = async () => {
-            const response = await fetchWithToken(`http://localhost:8090/my/puzzles/${puzzleId}`)
+            const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles/${puzzleId}`)
             const data = await response.json()
             setPuzzle(data)
         }

@@ -29,7 +29,7 @@ const MyPuzzles = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetchWithToken('http://localhost:8090/logout', {
+      const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/logout`, {
         method: 'GET'
       })
       if (response.ok) {

@@ -60,7 +60,7 @@ const AddPuzzle = () => {
     event.preventDefault()
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch('http://localhost:8090/my/puzzles', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/my/puzzles`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`

@@ -24,7 +24,7 @@ const PuzzleContextProvider = ({ children }) => {
   const fetchUserPuzzles = async () => {
     try {
       console.log('Fetching user puzzles')
-      const response = await fetchWithToken('http://localhost:8090/my/puzzles', {
+      const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles`, {
         method: 'GET'
       })
       if (response.ok) {
