@@ -31,7 +31,9 @@ const AddPuzzle = () => {
     Object.keys(formData).forEach(key => {
       if (formData[key] != null) {
         if (key === 'image') {
-          data.append(key, document.querySelector('input[type="file"]').files[0])
+          const file = document.querySelector('input[type="file"]').files[0]
+          resizeImage(file)
+          data.append(key, file)
         } else {
           data.append(key, formData[key])
         }
@@ -39,6 +41,36 @@ const AddPuzzle = () => {
     })
     return data
   }
+
+  function resizeImage(file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event) => {
+        const imgElement = document.createElement("img");
+        imgElement.src = event.target.result;
+        imgElement.onload = () => {
+            const canvas = document.createElement("canvas");
+            const maxWidth = 500;
+            const scaleSize = maxWidth / imgElement.width;
+            canvas.width = maxWidth;
+            canvas.height = imgElement.height * scaleSize;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(imgElement, 0, 0, canvas.width, canvas.height);
+            ctx.canvas.toBlob(
+                (blob) => {
+                    const resizedFile = new File([blob], file.name, {
+                        type: 'image/png',
+                        lastModified: Date.now()
+                    });
+                    console.log(resizedFile);
+                    // handle the uploading of resizedFile here
+                },
+                'image/png',
+                1
+            );
+        };
+    };
+}
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
