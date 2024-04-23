@@ -51,7 +51,7 @@ const AddPuzzle = () => {
         imgElement.src = event.target.result
         imgElement.onload = () => {
           const canvas = document.createElement("canvas")
-          const maxWidth = 800
+          const maxWidth = 600
           const scaleSize = maxWidth / imgElement.width
           canvas.width = maxWidth
           canvas.height = imgElement.height * scaleSize
