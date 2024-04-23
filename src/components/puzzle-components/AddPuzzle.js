@@ -51,7 +51,7 @@ const AddPuzzle = () => {
         imgElement.src = event.target.result
         imgElement.onload = () => {
           const canvas = document.createElement("canvas")
-          const maxWidth = 600
+          const maxWidth = 800
           const scaleSize = maxWidth / imgElement.width
           canvas.width = maxWidth
           canvas.height = imgElement.height * scaleSize
@@ -67,9 +67,7 @@ const AddPuzzle = () => {
               console.log(resizedFile)
               // handle the uploading of resizedFile here
             },
-            'image/png',
-            1
-          )
+            'image/png', 0.8)
         }
       }
       reader.onerror = reject
