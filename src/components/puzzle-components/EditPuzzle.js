@@ -1,6 +1,7 @@
 
 import Button from '../Button'
 import { useContext } from 'react'
+import nullPuzzleImage from '../../assets/images/null-puzzle.jpeg'
 import PuzzleForm from './PuzzleForm'
 import { useLocation } from 'react-router-dom'
 import { TokenContext } from '../contexts/TokenContext'
@@ -29,21 +30,29 @@ const EditPuzzle = () => {
   }
 
   return (
-    <div>
-      <PuzzleForm
-        fetchUrl={`my/puzzles/${puzzle.id}`}
-        method='PUT'
-        navigateUrl={`/puzzles/${puzzle.id}`}
-        buttonText='Spara'
-      />
-      <Button
-        buttonText='Radera pussel'
-        onClick={() => handleClickDelete(puzzle.id)}
-      />
-      <Button
-        buttonText='Tillbaka'
-        onClick={() => navigate(`/puzzles/${puzzle.id}`)} 
-      />
+    <div className='puzzle-area'>
+      <div className='puzzle-info'>
+        {puzzle.imageUrl ? (
+          <img src={puzzle.imageUrl} alt={puzzle.title} />
+        ) : (
+          <img src={nullPuzzleImage} alt={''} />
+        )
+        }
+        <PuzzleForm
+          fetchUrl={`my/puzzles/${puzzle.id}`}
+          method='PUT'
+          navigateUrl={`/puzzles/${puzzle.id}`}
+          buttonText='Spara'
+        />
+        <Button
+          buttonText='Radera pussel'
+          onClick={() => handleClickDelete(puzzle.id)}
+        />
+        <Button
+          buttonText='Tillbaka'
+          onClick={() => navigate(`/puzzles/${puzzle.id}`)}
+        />
+      </div>
     </div>
   )
 }
