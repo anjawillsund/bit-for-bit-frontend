@@ -60,8 +60,7 @@ const AddPuzzle = () => {
           ctx.canvas.toBlob(
             (blob) => {
               const resizedFile = new File([blob], file.name, {
-                type: 'image/png',
-                lastModified: Date.now()
+                type: 'image/png'
               })
               resolve(resizedFile)
               console.log(resizedFile)
