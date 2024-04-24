@@ -51,6 +51,9 @@ const SinglePuzzle = () => {
                 <p><span className='heavy'>Delad anteckning:</span> {puzzle.sharedNote ? (puzzle.sharedNote) : ('-')}</p>
                 <p><span className='heavy'>Storlek i cm:</span> {puzzle.sizeWidth ? (`${puzzle.sizeWidth} x ${puzzle.sizeHeight}`) : ('-')}</p>
                 <p><span className='heavy'>Senast lagt:</span> {puzzle.lastPlayed ? (puzzle.lastPlayed) : ('-')}</p>
+                <p><span className='heavy'>Plats:</span> {puzzle.location ? (puzzle.location) : ('-')}</p>
+                {puzzle.piecesNumber ? (<p><span className='heavy'>Antal saknade bitar:</span> {!puzzle.complete ? (puzzle.missingPiecesNumber) : ('0')}</p>) : null}
+                {puzzle.isLentOut ? (<p><span className='heavy'>Utlånat till:</span> {puzzle.lentOutToString}</p>) : null}
             </div>
             <Button
                 onClick={handleGoToAllPuzzles}
