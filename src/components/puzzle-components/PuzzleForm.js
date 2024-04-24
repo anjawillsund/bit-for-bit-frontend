@@ -146,10 +146,12 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
         Plats:
         <input type="text" name="location" value={formData.location} onChange={handleChange} />
       </label>
-      <label>
-        Komplett:
-        <input type="checkbox" name="complete" checked={formData.complete} onChange={handleChange} />
-      </label>
+      {formData.piecesNumber && (
+        <label>
+          Komplett:
+          <input type="checkbox" name="complete" checked={formData.complete} onChange={handleChange} />
+        </label>
+      )}
       {!formData.complete && (
         <label>
           Antal saknade bitar:
