@@ -11,18 +11,18 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
   const initialFormData = {
     title: puzzle?.title || '',
     piecesNumber: puzzle?.piecesNumber || '',
-    height: puzzle?.height || '',
-    width: puzzle?.width || '',
+    sizeWidth: puzzle?.sizeWidth || '',
+    sizeHeight: puzzle?.sizeHeight || '',
     manufacturer: puzzle?.manufacturer || '',
     lastPlayed: puzzle?.lastPlayed || '',
     location: puzzle?.location || '',
-    complete: puzzle?.complete || true,
+    complete: puzzle.complete === false ? false : true,
     missingPiecesNumber: puzzle?.missingPiecesNumber || '',
     privateNote: puzzle?.privateNote || '',
     sharedNote: puzzle?.sharedNote || '',
     isLentOut: puzzle?.isLentOut || false,
     lentOutToString: puzzle?.lentOutToString || '',
-    isPrivate: puzzle?.isPrivate || true
+    isPrivate: puzzle.isPrivate === false ? false : true
   }
   const [formData, setFormData] = useState(initialFormData)
 
@@ -126,13 +126,25 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
         Antal bitar:
         <input type="text" name="piecesNumber" value={formData.piecesNumber} onChange={handleChange} />
       </label>
-      <label>
-        Höjd (cm):
-        <input type="text" name="height" value={formData.height} onChange={handleChange} />
-      </label>
+      {formData.piecesNumber && (
+        <label>
+          Komplett:
+          <input type="checkbox" name="complete" checked={formData.complete} onChange={handleChange} />
+        </label>
+      )}
+      {!formData.complete && (
+        <label>
+          Antal saknade bitar:
+          <input type="text" name="missingPiecesNumber" value={formData.missingPiecesNumber} onChange={handleChange} />
+        </label>
+      )}
       <label>
         Bredd (cm):
-        <input type="text" name="width" value={formData.width} onChange={handleChange} />
+        <input type="text" name="sizeWidth" value={formData.sizeWidth} onChange={handleChange} />
+      </label>
+      <label>
+        Höjd (cm):
+        <input type="text" name="sizeHeight" value={formData.sizeHeight} onChange={handleChange} />
       </label>
       <label>
         Tillverkare:
@@ -146,18 +158,6 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
         Plats:
         <input type="text" name="location" value={formData.location} onChange={handleChange} />
       </label>
-      {formData.piecesNumber && (
-        <label>
-          Komplett:
-          <input type="checkbox" name="complete" checked={formData.complete} onChange={handleChange} />
-        </label>
-      )}
-      {!formData.complete && (
-        <label>
-          Antal saknade bitar:
-          <input type="text" name="missingPiecesNumber" value={formData.missingPiecesNumber} onChange={handleChange} />
-        </label>
-      )}
       <label>
         Privat anteckning:
         <input type="text" name="privateNote" value={formData.privateNote} onChange={handleChange} />
