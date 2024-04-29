@@ -3,7 +3,6 @@ import React from 'react'
 import { useContext, useEffect } from 'react'
 import { PuzzleContext } from '../contexts/PuzzleContext'
 import { useNavigate, Link } from 'react-router-dom'
-import { TokenContext } from '../contexts/TokenContext'
 import nullPuzzleImage from '../../assets/images/null-puzzle.jpeg'
 
 /**
@@ -14,9 +13,8 @@ import nullPuzzleImage from '../../assets/images/null-puzzle.jpeg'
  */
 const MyPuzzles = () => {
   const navigate = useNavigate()
-  const fetchWithToken = useContext(TokenContext)
 
-  const { fetchUserPuzzles, puzzlesArray, resetState, isLoadingPuzzles, setIsLoadingPuzzles } = useContext(PuzzleContext)
+  const { fetchUserPuzzles, puzzlesArray, isLoadingPuzzles, setIsLoadingPuzzles } = useContext(PuzzleContext)
 
   useEffect(() => {
     async function loadData() {
@@ -27,34 +25,12 @@ const MyPuzzles = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleLogout = async () => {
-    try {
-      const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/logout`, {
-        method: 'GET'
-      })
-      if (response.ok) {
-        resetState()
-        localStorage.removeItem('token')
-        const message = 'You have been logged out'
-        navigate('/', { state: { message } })
-      } else {
-        console.log('Could not log out')
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   const handleAddPuzzle = () => {
     navigate('/add-puzzle')
   }
 
   return (
     <div className='puzzles'>
-      <Button
-        onClick={handleLogout}
-        buttonText='Logout'
-      />
       <Button
         onClick={handleAddPuzzle}
         buttonText='Lägg till pussel'
