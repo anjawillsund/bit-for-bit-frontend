@@ -106,9 +106,9 @@ h1.logo {
 .form-container {
   background-color: rgb(69, 143, 230);
   border-radius: 20px;
-  border-color: rgb(36, 85, 141);
+  /* border-color: rgb(36, 85, 141);
   border-width: 3px;
-  border-style: solid;
+  border-style: solid; */
   box-sizing: border-box;
   height: auto;
   padding: 20px;
@@ -124,17 +124,6 @@ h1.logo {
   display: flex;
   flex-direction: column;
   justify-content: left;
-}
-
-.form-control button {
-  color: rgb(36, 85, 141);
-  height: 40px;
-  font-size: 1.5rem;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color: white;
-  width: 100%;
-  border-radius: 15px;
-  border: 2px solid rgb(36, 85, 141);
 }
 
 .form-control input {
@@ -168,9 +157,9 @@ h1.logo {
   margin: 8px 0 0 0;
   height: 35px;
   font-size: 1.2rem;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+  font-family: Arial, Helvetica, sans-serif;
   background-color: white;
-  /* padding: 0; */
   width: 80%;
   border-radius: 15px;
   border: 1px solid rgb(36, 85, 141);
@@ -217,7 +206,10 @@ h1.logo {
   width: 100%;
   height: 60px;
   z-index: 2;
-  background-color: #9f9f9f;
+  background-color: rgb(69, 143, 230);
+  display: flex;
+  justify-content: center;
+  align-items: center; 
 }
 
 .navigation {
@@ -225,40 +217,44 @@ h1.logo {
   flex-direction: column;
 }
 
-.settings-bar {
-  padding: 10px 25px;
-}
-
-.settings-bar h1.logo-small {
-  font-size: 2rem;
-}
-
-.settings-bar ul {
-  list-style-type: none;
+.navigation-component {
+  position: relative;
   display: flex;
-  flex-direction: row;
-  padding: 0;
+  /* justify-content: space-between; */
+  align-items: center;
+  width: 100%;
+  /* padding: 10px 20px; */
+}
+
+.navigation-title-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.logout-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.logout-button button {
+  background: transparent;
+  border: none;
+}
+
+.logout-button button img {
+  width: 30px;
+  height: 30px;
+}
+
+.navigation-component p {
   margin: 0;
-  justify-content: space-between;
-}
-
-.settings {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-/* Matching options area */
-.matching-options-area {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+  padding-top: 5px;
+  font-family: 'HandwritingFont', Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 3rem;
 }
 
 /* Content area */
