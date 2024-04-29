@@ -1,3 +1,5 @@
+import LogOut from "../user-components/LogOut.js"
+
 /**
  * Component for rendering the navigation bar.
  *
@@ -5,8 +7,11 @@
  */
 const Navigation = () => {
 	return (
-		<div>
-			<p>Meny</p>
+		<div className='navigation-component'>
+			<div className='navigation-title-container'>
+        <p>Bit För Bit</p>
+      </div>
+			<LogOut />
 		</div>
 	)
 }
