@@ -101,7 +101,7 @@ const StartPage = () => {
   return (
     <div className='start-page'>
       <h1 className='logo'>
-        <span className='coral'>Bit För Bit</span>
+      <span className='jigsaw'><span className='green'>B</span><span className='yellow'>i</span><span className='coral'>t</span></span> <span className='handwriting'>För</span> <span className='jigsaw'><span className='green'>B</span><span className='yellow'>i</span><span className='coral'>t</span></span>
       </h1>
       <div className='form-container'>
         <div className='login-form form'>
