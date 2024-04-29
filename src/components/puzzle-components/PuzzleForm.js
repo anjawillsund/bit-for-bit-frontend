@@ -16,13 +16,13 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
     manufacturer: puzzle?.manufacturer || '',
     lastPlayed: puzzle?.lastPlayed || '',
     location: puzzle?.location || '',
-    complete: puzzle.complete === false ? false : true,
+    complete: puzzle?.complete === false ? false : true,
     missingPiecesNumber: puzzle?.missingPiecesNumber || '',
     privateNote: puzzle?.privateNote || '',
     sharedNote: puzzle?.sharedNote || '',
     isLentOut: puzzle?.isLentOut || false,
     lentOutToString: puzzle?.lentOutToString || '',
-    isPrivate: puzzle.isPrivate === false ? false : true
+    isPrivate: puzzle?.isPrivate === false ? false : true
   }
   const [formData, setFormData] = useState(initialFormData)
 
