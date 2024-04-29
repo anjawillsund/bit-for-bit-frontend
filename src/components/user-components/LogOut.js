@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useTokenContext } from '../contexts/TokenContext.js'
-import { MovieContext } from '../contexts/MovieContext.js'
+import { TokenContext } from '../contexts/TokenContext.js'
+import { PuzzleContext } from '../contexts/PuzzleContext.js'
 import Button from '../Button.js'
+import logOut from '../../assets/icons/logout.png'
 
 /**
  * Component for logging out a user.
@@ -12,9 +13,9 @@ import Button from '../Button.js'
 const LogOut = () => {
 	const navigate = useNavigate()
 
-	const fetchWithToken = useTokenContext()
+	const fetchWithToken = useContext(TokenContext)
 
-	const { resetState } = useContext(MovieContext)
+	const { resetState } = useContext(PuzzleContext)
 
 	const [errorMessage, setErrorMessage] = useState('')
 
@@ -23,14 +24,14 @@ const LogOut = () => {
 	 */
 	const handleLogout = async () => {
 		try {
-			// const response = await fetchWithToken('http://localhost:5080/user/logout', {
-			const response = await fetchWithToken('https://cscloud7-230.lnu.se/pixflixr-server/user/logout', {
+			const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/logout`, {
 				method: 'GET'
 			})
 			if (response.ok) {
 				resetState()
 				localStorage.removeItem('token')
-				const message = await response.text()
+				const responseMessage = await response.text()
+				const message = JSON.parse(responseMessage).message
 				navigate('/', { state: { message } })
 			} else {
 				const errorMessage = await response.text()
@@ -43,10 +44,10 @@ const LogOut = () => {
 	}
 
 	return (
-		<div>
+		<div className='logout-button'>
 			<Button
 				onClick={handleLogout}
-				buttonText='Logout'
+				imageSrc={logOut}
 			/>
 			<div>
 				{errorMessage ? (
