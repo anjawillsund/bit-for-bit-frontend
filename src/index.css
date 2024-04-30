@@ -220,10 +220,8 @@ h1.logo {
 .navigation-component {
   position: relative;
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   width: 100%;
-  /* padding: 10px 20px; */
 }
 
 .navigation-title-container {
@@ -296,9 +294,31 @@ h1.logo {
 
 /* Puzzles */
 .puzzles {
-  width: 90%;
+  width: 100%;
+  height: 100vh;
   overflow: auto;
   padding-bottom: 5%;
+  background-color: rgb(196, 224, 255);
+}
+
+.add-puzzle {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(196, 224, 255);
+}
+
+.add-puzzle-button-container {
+  display: flex;
+  justify-content: right;
+}
+
+.add-puzzle-button-container button {
+  background-color: rgb(196, 224, 255);
+  color: black;
+  padding: 0px 10px;
+  border: gray;
+  cursor: pointer;
+  font-size: 4rem;
 }
 
 .puzzles p {
@@ -321,12 +341,12 @@ h1.logo {
 }
 
 .puzzles ul li {
-  flex: 0 0 48%; /* each li takes up 50% of the flex container width */
-  margin: 2px;
-  cursor: pointer; /* makes the li clickable */
-  background: #fff; /* optional: background color for the li */
-  border-radius: 5px; /* optional: border radius for the li */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* optional: adds shadow for better visibility */
+  flex: 0 0 48%;
+  margin: 5px 3px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   overflow: hidden;
 }
 
@@ -338,52 +358,24 @@ h1.logo {
 }
 
 .puzzles ul li .text-content {
-  padding: 8px; /* adds some padding around the text */
-  text-align: left; /* centers the text horizontally */
-}
-
-.puzzles ul li .text-content {
-  padding: 8px; /* adds some padding around the text */
-  text-align: left; /* centers the text horizontally */
+  padding: 8px;
+  text-align: left;
 }
 
 .puzzles ul li h3 {
-  font-size: 0.8rem; /* sets the font size of the title */
-  margin: 0; /* removes the default margin of the h3 element */
+  font-size: 0.8rem;
+  margin: 0;
 }
 
 .puzzles ul li p {
-  font-size: 0.8rem; /* sets the font size of the title */
-  margin: 0; /* removes the default margin of the h3 element */
+  font-size: 0.8rem;
+  margin: 0;
   text-align: left
 }
 
 .puzzles a, .puzzles a:visited {
   text-decoration: none;
   color: #3a3a3a;
-}
-
-.settings-page {
-  position: relative;
-  margin-top: 0;
-  padding-top: 100px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.settings-page button {
-  background-color: rgb(69, 143, 230);
-  border-radius: 15px;
-  font-size: 2rem;
-  padding: 10px;
-  min-width: 250px;
-  margin-bottom: 10px;
-  height: 60px;
-  width: 100%;
-  color: #F2F2F2;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 #delete-button {
