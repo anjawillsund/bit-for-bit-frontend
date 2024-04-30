@@ -6,7 +6,7 @@ const AddPuzzle = () => {
   const navigate = useNavigate()
 
   return (
-    <div>
+    <div className='add-puzzle'>
       <PuzzleForm
         fetchUrl='my/puzzles'
         method='POST'
