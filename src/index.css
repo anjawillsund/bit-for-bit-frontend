@@ -23,10 +23,10 @@ body {
   height: 100%;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
 
 .App {
   text-align: center;
@@ -157,7 +157,6 @@ h1.logo {
   margin: 8px 0 0 0;
   height: 35px;
   font-size: 1.2rem;
-  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
   font-family: Arial, Helvetica, sans-serif;
   background-color: white;
   width: 80%;
@@ -184,12 +183,61 @@ h1.logo {
   outline-offset: -4px;
 }
 
-/* Add puzzle form */
+/* Puzzle form */
 .puzzle-form {
   display: flex;
   flex-direction: column;
   align-items: left;
   height: 100%;
+}
+
+.puzzle-form label {
+  font-size: 1.2rem;
+  margin: 10px 10px 0 0;
+}
+
+.puzzle-form button {
+  margin-top: 15px;
+}
+
+/* DatePicker button {
+  color: white;
+} */
+
+textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  width: 100%;
+  height: 100px;
+  margin: 5px 0;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+input[type=text] {
+  font-size: 1.2rem;
+  width: 100%;
+  height: 30px;
+  margin: 5px 0;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* Puzzle form */
+input[type=file]::file-selector-button {
+  content: 'Välj bild';
+  display: inline-block;
+  background-color: rgb(69, 143, 230);
+  color: white;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
 }
 
 /* System message */
@@ -275,7 +323,7 @@ h1.logo {
 .button-area {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .puzzle-area Button {
@@ -283,7 +331,8 @@ h1.logo {
   background-color: rgb(69, 143, 230);
   color: white;
   border: none;
-  margin: 0 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   border-radius: 5px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
   padding: 5px 10px;
@@ -418,14 +467,8 @@ button:active {
   pointer-events: none;
 }
 
-#delete-button {
-  position: fixed;
-  bottom: 0;
-  margin-bottom: 10px;
-}
-
-#delete-button button {
-  background-color: #be3636;
+.button-area #delete-button {
+  background-color: #bb4d4d;
 }
 
 /* Cursor */
