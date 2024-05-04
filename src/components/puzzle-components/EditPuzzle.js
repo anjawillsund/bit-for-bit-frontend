@@ -44,14 +44,17 @@ const EditPuzzle = () => {
           navigateUrl={`/puzzles/${puzzle.id}`}
           buttonText='Spara'
         />
-        <Button
-          buttonText='Radera pussel'
-          onClick={() => handleClickDelete(puzzle.id)}
-        />
-        <Button
-          buttonText='Tillbaka'
-          onClick={() => navigate(`/puzzles/${puzzle.id}`)}
-        />
+        <div className='button-area'>
+          <Button
+            id='delete-button'
+            buttonText='Radera pussel'
+            onClick={() => handleClickDelete(puzzle.id)}
+          />
+          <Button
+            buttonText='Tillbaka'
+            onClick={() => navigate(`/puzzles/${puzzle.id}`)}
+          />
+        </div>
       </div>
     </div>
   )

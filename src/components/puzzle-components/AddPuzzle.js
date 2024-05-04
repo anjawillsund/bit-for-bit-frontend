@@ -13,10 +13,12 @@ const AddPuzzle = () => {
         navigateUrl={`/my-puzzles`}
         buttonText='Lägg till pussel'
       />
-      <Button
-        buttonText='Tillbaka'
-        onClick={() => navigate('/my-puzzles')} 
-      />
+      <div className='button-area'>
+        <Button
+          buttonText='Tillbaka'
+          onClick={() => navigate('/my-puzzles')}
+        />
+      </div>
     </div>
   )
 }
