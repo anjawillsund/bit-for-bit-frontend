@@ -55,6 +55,7 @@ const SinglePuzzle = () => {
                 <p><span className='heavy'>Delad anteckning:</span> {puzzle.sharedNote ? (puzzle.sharedNote) : ('-')}</p>
                 {puzzle.isLentOut ? (<p><span className='heavy'>Utlånat till:</span> {puzzle.lentOutToString}</p>) : null}
             </div>
+            <div className='button-area'>
             <Button
                 onClick={handleGoToAllPuzzles}
                 buttonText='Visa alla pussel'
@@ -63,6 +64,7 @@ const SinglePuzzle = () => {
                 onClick={handleEditPuzzle}
                 buttonText='Ändra'
             />
+            </div>
         </div>
     )
 }
