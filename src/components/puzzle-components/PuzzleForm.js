@@ -115,69 +115,69 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
   return (
     <form className="puzzle-form" onSubmit={handleSubmit}>
       <label>
-        Bild:
-        <input type="file" name="image" onChange={handleChange} accept="image/*" />
+        Bild
+        <input type="file" name="image" onChange={handleChange} accept="image/*" className="styled-file-input" />
       </label>
       <label>
-        Titel:
+        Titel
         <input type="text" name="title" value={formData.title} onChange={handleChange} />
       </label>
       <label>
-        Antal bitar:
+        Antal bitar
         <input type="text" name="piecesNumber" value={formData.piecesNumber} onChange={handleChange} />
       </label>
       {formData.piecesNumber && (
         <label>
-          Komplett:
+          Komplett
           <input type="checkbox" name="complete" checked={formData.complete} onChange={handleChange} />
         </label>
       )}
       {!formData.complete && (
         <label>
-          Antal saknade bitar:
+          Antal saknade bitar
           <input type="text" name="missingPiecesNumber" value={formData.missingPiecesNumber} onChange={handleChange} />
         </label>
       )}
       <label>
-        Bredd (cm):
+        Bredd (cm)
         <input type="text" name="sizeWidth" value={formData.sizeWidth} onChange={handleChange} />
       </label>
       <label>
-        Höjd (cm):
+        Höjd (cm)
         <input type="text" name="sizeHeight" value={formData.sizeHeight} onChange={handleChange} />
       </label>
       <label>
-        Tillverkare:
+        Tillverkare
         <input type="text" name="manufacturer" value={formData.manufacturer} onChange={handleChange} />
       </label>
       <label>
-        Senast lagt:
+        Senast lagt
         <DatePicker selected={formData.lastPlayed} onChange={handleDateChange} />
       </label>
       <label>
-        Plats:
+        Plats
         <input type="text" name="location" value={formData.location} onChange={handleChange} />
       </label>
       <label>
-        Privat anteckning:
-        <input type="text" name="privateNote" value={formData.privateNote} onChange={handleChange} />
+        Privat anteckning
+        <textarea name="privateNote" value={formData.privateNote} onChange={handleChange} />
       </label>
       <label>
-        Delad anteckning:
-        <input type="text" name="sharedNote" value={formData.sharedNote} onChange={handleChange} />
+        Delad anteckning
+        <textarea name="sharedNote" value={formData.sharedNote} onChange={handleChange} />
       </label>
       <label>
-        Är utlånat:
+        Är utlånat
         <input type="checkbox" name="isLentOut" checked={formData.isLentOut} onChange={handleChange} />
       </label>
       {formData.isLentOut && (
         <label>
-          Utlånat till:
+          Utlånat till
           <input type="text" name="lentOutToString" value={formData.lentOutToString} onChange={handleChange} />
         </label>
       )}
       <label>
-        Är privat:
+        Är privat
         <input type="checkbox" name="isPrivate" checked={formData.isPrivate} onChange={handleChange} />
       </label>
       <button type="submit">{buttonText}</button>
