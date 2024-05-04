@@ -44,11 +44,19 @@ const MyPuzzles = () => {
           {puzzlesArray.length > 0 ? (puzzlesArray.map(puzzle => (
             <li key={puzzle.id} className="puzzle-item">
               <Link to={`/puzzles/${puzzle.id}`}>
-                {puzzle.imageUrl ? (
-                  <img src={puzzle.imageUrl} alt={puzzle.title} />
-                ) : (
-                  <img src={nullPuzzleImage} alt={''} />
-                )}
+                <div className={`image-container ${puzzle.isLentOut ? 'lent-out' : ''}`}>
+                  {puzzle.imageUrl ? (
+                    <img
+                      src={puzzle.imageUrl}
+                      alt={puzzle.title}
+                    />
+                  ) : (
+                    <img
+                      src={nullPuzzleImage}
+                      alt={''}
+                    />
+                  )}
+                </div>
                 <div className="text-content">
                   <h3>{puzzle.title}</h3>
                   <p>Antal bitar: {puzzle.piecesNumber ? (puzzle.piecesNumber) : ('-')}</p>
