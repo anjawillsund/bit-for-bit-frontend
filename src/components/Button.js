@@ -10,10 +10,10 @@
  * @param {string} [props.alt] - The alt text for the image.
  * @returns {JSX.Element} The JSX element representing the Button component.
  */
-const Button = ({ className, onClick, buttonText, disabled, imageSrc, alt }) => {
+const Button = ({ id, className, onClick, buttonText, disabled, imageSrc, alt }) => {
 
   return (
-    <button onClick={onClick} className={className} disabled={disabled}>
+    <button onClick={onClick} id={id} className={className} disabled={disabled}>
       {imageSrc && <img src={imageSrc} alt={alt} style={{ marginRight: buttonText ? '10px' : '0' }} />}
       {buttonText}
     </button>
