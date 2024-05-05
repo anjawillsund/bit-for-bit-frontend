@@ -3,7 +3,7 @@ import Button from '../Button'
 import { useContext } from 'react'
 import nullPuzzleImage from '../../assets/images/null-puzzle.jpeg'
 import PuzzleForm from './PuzzleForm'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { TokenContext } from '../contexts/TokenContext'
 import { useNavigate } from 'react-router-dom'
 
@@ -11,13 +11,11 @@ const EditPuzzle = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { puzzle } = location.state || {}
-  const { puzzleId } = useParams()
   const fetchWithToken = useContext(TokenContext)
 
-  const handleClickDelete = async () => {
-    console.log(puzzleId)
+  const handleClickDelete = async (id) => {
     try {
-      const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles/${puzzleId}`, {
+      const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles/${id}`, {
         method: 'DELETE'
       })
       if (response.ok) {
@@ -41,20 +39,20 @@ const EditPuzzle = () => {
         )
         }
         <PuzzleForm
-          fetchUrl={`my/puzzles/${puzzleId}`}
+          fetchUrl={`my/puzzles/${puzzle.id}`}
           method='PUT'
-          navigateUrl={`/puzzles/${puzzleId}`}
+          navigateUrl={`/puzzles/${puzzle.id}`}
           buttonText='Spara'
         />
         <div className='button-area'>
           <Button
-            id='delete-button'
+            className='delete-button'
             buttonText='Radera pussel'
-            onClick={() => handleClickDelete()}
+            onClick={() => handleClickDelete(puzzle.id)}
           />
           <Button
             buttonText='Tillbaka'
-            onClick={() => navigate(`/puzzles/${puzzleId}`)}
+            onClick={() => navigate(`/puzzles/${puzzle.id}`)}
           />
         </div>
       </div>
