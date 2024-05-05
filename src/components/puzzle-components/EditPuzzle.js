@@ -14,6 +14,7 @@ const EditPuzzle = () => {
   const fetchWithToken = useContext(TokenContext)
 
   const handleClickDelete = async (id) => {
+    console.log(id)
     try {
       const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles/${id}`, {
         method: 'DELETE'
