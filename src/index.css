@@ -352,7 +352,7 @@ input[type=file]::file-selector-button {
   display: flex;
   justify-content: center;
   margin-top: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 100px;
   background-color: rgb(196, 224, 255);
 }
 
