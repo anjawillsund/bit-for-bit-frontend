@@ -13,10 +13,10 @@ const EditPuzzle = () => {
   const { puzzle } = location.state || {}
   const fetchWithToken = useContext(TokenContext)
 
-  const handleClickDelete = async (id) => {
-    console.log(id)
+  const handleClickDelete = async () => {
+    console.log(puzzle.id)
     try {
-      const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles/${id}`, {
+      const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles/${puzzle.id}`, {
         method: 'DELETE'
       })
       if (response.ok) {
@@ -49,7 +49,7 @@ const EditPuzzle = () => {
           <Button
             id='delete-button'
             buttonText='Radera pussel'
-            onClick={() => handleClickDelete(puzzle.id)}
+            onClick={() => handleClickDelete()}
           />
           <Button
             buttonText='Tillbaka'
