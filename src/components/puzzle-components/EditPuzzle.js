@@ -41,9 +41,9 @@ const EditPuzzle = () => {
         )
         }
         <PuzzleForm
-          fetchUrl={`my/puzzles/${puzzle.id}`}
+          fetchUrl={`my/puzzles/${puzzleId}`}
           method='PUT'
-          navigateUrl={`/puzzles/${puzzle.id}`}
+          navigateUrl={`/puzzles/${puzzleId}`}
           buttonText='Spara'
         />
         <div className='button-area'>
@@ -54,7 +54,7 @@ const EditPuzzle = () => {
           />
           <Button
             buttonText='Tillbaka'
-            onClick={() => navigate(`/puzzles/${puzzle.id}`)}
+            onClick={() => navigate(`/puzzles/${puzzleId}`)}
           />
         </div>
       </div>
