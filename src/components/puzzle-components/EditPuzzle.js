@@ -46,7 +46,7 @@ const EditPuzzle = () => {
         />
         <div className='button-area'>
           <Button
-            className='delete-button'
+            id='delete-button'
             buttonText='Radera pussel'
             onClick={() => handleClickDelete(puzzle.id)}
           />
