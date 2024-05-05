@@ -3,7 +3,7 @@ import Button from '../Button'
 import { useContext } from 'react'
 import nullPuzzleImage from '../../assets/images/null-puzzle.jpeg'
 import PuzzleForm from './PuzzleForm'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { TokenContext } from '../contexts/TokenContext'
 import { useNavigate } from 'react-router-dom'
 
@@ -11,12 +11,13 @@ const EditPuzzle = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { puzzle } = location.state || {}
+  const { puzzleId } = useParams()
   const fetchWithToken = useContext(TokenContext)
 
   const handleClickDelete = async () => {
-    console.log(puzzle.id)
+    console.log(puzzleId)
     try {
-      const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles/${puzzle.id}`, {
+      const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles/${puzzleId}`, {
         method: 'DELETE'
       })
       if (response.ok) {
