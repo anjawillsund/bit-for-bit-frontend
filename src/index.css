@@ -39,6 +39,8 @@ body {
 
 .container {
   position: relative;
+  background-color: rgb(196, 224, 255);
+  height: 100%;
 }
 
 /* Form pages */
