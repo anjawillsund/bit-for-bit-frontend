@@ -334,8 +334,10 @@ input[type=file]::file-selector-button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
   margin-top: 60px;
   margin-bottom: 0;
+  padding-bottom: 30px;
   background-color: rgb(196, 224, 255);
 }
 
@@ -352,7 +354,6 @@ input[type=file]::file-selector-button {
   display: flex;
   justify-content: center;
   margin-top: 15px;
-  margin-bottom: 100px;
   background-color: rgb(196, 224, 255);
 }
 
