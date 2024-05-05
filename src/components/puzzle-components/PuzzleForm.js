@@ -89,13 +89,12 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
   }
 
   const handleSubmit = async (event) => {
-    console.log(puzzle)
     event.preventDefault()
     const formDataInput = await createFormData()
     const fetchMethod = method
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/my/puzzles/${puzzle.id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/${fetchUrl}`, {
         method: fetchMethod,
         headers: {
           Authorization: `Bearer ${token}`
