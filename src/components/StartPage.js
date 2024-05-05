@@ -32,7 +32,7 @@ const StartPage = () => {
     const storedMessage = urlParams.get('message')
     // If a 'message' parameter value exists, set it as the message state
     if (storedMessage) {
-      setMessage(storedMessage);
+      setMessage(storedMessage)
       // If no 'message' parameter exists, get the message from location state (if available)
     } else {
       const newMessage = location.state?.message || ''
