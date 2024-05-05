@@ -382,14 +382,12 @@ button:active {
 .puzzle-info {
   position: relative;
   width: 100%;
-  max-width: 95vw;
   text-align: left;
 }
 
 .puzzle-info img {
-  max-width: 100%;
+  width: 95vw;
   margin: 5px 0;
-  max-height: calc(100vh - 160px - 140px);
   display: block;
   border-radius: 5px;
   object-fit: contain;
