@@ -24,7 +24,11 @@ const SinglePuzzle = () => {
     }, [])
 
     if (!puzzle) {
-        return <div>Laddar...</div>
+        return (
+            <div className='loading'>
+                <p>Laddar...</p>
+            </div>
+        )
     }
 
     const handleGoToAllPuzzles = () => {
