@@ -54,7 +54,7 @@ const SinglePuzzle = () => {
                 <p><span className='heavy'>Storlek i cm:</span> {puzzle.sizeWidth ? (`${puzzle.sizeWidth} x ${puzzle.sizeHeight}`) : ('-')}</p>
                 <p><span className='heavy'>Tillverkare:</span> {puzzle.manufacturer ? (puzzle.manufacturer) : ('-')}</p>
                 <p><span className='heavy'>Senast lagt:</span> {puzzle.lastPlayed ? (puzzle.lastPlayed) : ('-')}</p>
-                <p><span className='heavy'>Plats:</span> {puzzle.location ? (puzzle.location) : ('-')}</p>
+                <p><span className='heavy'>Förvaras i/på:</span> {puzzle.location ? (puzzle.location) : ('-')}</p>
                 <p><span className='heavy'>Privat anteckning:</span> {puzzle.privateNote ? (puzzle.privateNote) : ('-')}</p>
                 <p><span className='heavy'>Delad anteckning:</span> {puzzle.sharedNote ? (puzzle.sharedNote) : ('-')}</p>
                 {puzzle.isLentOut ? (<p><span className='heavy'>Utlånat till:</span> {puzzle.lentOutToString}</p>) : null}

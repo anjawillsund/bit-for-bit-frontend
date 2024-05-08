@@ -155,7 +155,7 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
         <DatePicker selected={formData.lastPlayed} onChange={handleDateChange} />
       </label>
       <label>
-        Plats
+        Förvaras i/på
         <input type="text" name="location" value={formData.location} onChange={handleChange} />
       </label>
       <label>
