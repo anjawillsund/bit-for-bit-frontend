@@ -7,6 +7,7 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
   const location = useLocation()
   const navigate = useNavigate()
   const { puzzle } = location.state || {}
+  const [errors, setErrors] = useState([])
 
   const initialFormData = {
     title: puzzle?.title || '',
@@ -105,6 +106,9 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
         navigate(navigateUrl)
         console.log('Puzzle added')
       } else {
+        const error = await response.json()
+        const errorArray = error.message
+        setErrors(errorArray)
         console.log('Could not add puzzle')
       }
     } catch (error) {
@@ -180,6 +184,18 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
         Är privat
         <input type="checkbox" name="isPrivate" checked={formData.isPrivate} onChange={handleChange} />
       </label>
+      {errors.length > 0 && (
+      <div className='error-list'>
+        <ul>
+          {errors.map((error, index) => (
+            <li key={index}>
+              &#x1F9E9;
+              <span className='puzzle-point'>{error}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
       <button type="submit">{buttonText}</button>
     </form>
   )
