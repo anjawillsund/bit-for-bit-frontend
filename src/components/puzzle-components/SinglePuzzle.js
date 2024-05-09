@@ -16,6 +16,10 @@ const SinglePuzzle = () => {
         const fetchPuzzle = async () => {
             const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles/${puzzleId}`)
             const data = await response.json()
+            if (!data.imageUrl) {
+                data.imageUrl = nullPuzzleImage
+            }
+            console.log(data)
             setPuzzle(data)
         }
 
