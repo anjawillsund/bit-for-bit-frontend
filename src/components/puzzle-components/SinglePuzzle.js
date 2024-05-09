@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import Button from '../Button'
 import { TokenContext } from '../contexts/TokenContext'
-import nullPuzzleImage from '/static/media/null-puzzle.717fe524d0273830469f.jpeg'
+import nullPuzzleImage from '../../assets/images/null-puzzle.jpeg'
 import { useNavigate } from 'react-router-dom'
 
 const SinglePuzzle = () => {
