@@ -448,6 +448,7 @@ button:active {
 .add-puzzle-button-container {
   display: flex;
   justify-content: right;
+  width: 100%;
 }
 
 .add-puzzle-button-container button {
@@ -469,6 +470,35 @@ button:active {
   width: 32px;
   height: 32px;
   padding-bottom: 7px;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+#lent-out-button-field {
+  display: flex;
+  clear: both;
+}
+
+#lent-out-button {
+  background-color: transparent;
+  border: none;
+}
+
+#lent-out-button img {
+  width: 40px;
+  height: 40px;
+}
+
+#pieces-number-filter {
+  display: block;
+}
+
+#pieces-number-options {
+  display: inline-block;
 }
 
 .puzzle-area {

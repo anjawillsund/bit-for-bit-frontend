@@ -3,8 +3,9 @@ import { useContext, useEffect, useState } from 'react'
 import { PuzzleContext } from '../contexts/PuzzleContext'
 import { useNavigate, Link } from 'react-router-dom'
 import nullPuzzleImage from '../../assets/images/null-puzzle.jpeg'
-
 import filter from '../../assets/icons/filter.png'
+import lentOut from '../../assets/icons/lent-out.png'
+
 
 /**
  * Renders a list of the user's puzzles.
@@ -46,7 +47,7 @@ const MyPuzzles = () => {
     }
   }
 
-  const uniquePieceNumbers = [...new Set(puzzlesArray.map((puzzle) => puzzle.piecesNumber))].filter(Boolean)
+  const uniquePieceNumbers = [...new Set(puzzlesArray.map((puzzle) => puzzle.piecesNumber))].filter(Boolean).sort((a, b) => a - b)
 
   const handleToggleFilter = () => {
     setShowFilters(!showFilters)
@@ -64,22 +65,33 @@ const MyPuzzles = () => {
           onClick={handleAddPuzzle}
           buttonText='+'
         />
-        {showFilters && (
-        <div className='piece-filter'>
-        <Button onClick={toggleLentOutFilter} buttonText={hideLentOut ? 'Show Lent Out' : 'Hide Lent Out'} />
-        {uniquePieceNumbers.map((pieceNumber) => (
-          <label key={pieceNumber}>
-            <input
-              type='checkbox'
-              checked={selectedPieces.includes(pieceNumber)}
-              onChange={() => togglePieceFilter(pieceNumber)}
+      </div>
+      {showFilters && (
+        <div className='filter-field'>
+          <div id='lent-out-button-field'>
+            <Button
+              id='lent-out-button'
+              onClick={toggleLentOutFilter}
+              imageSrc={lentOut}
             />
-            {pieceNumber}
-          </label>
-        ))}
-      </div>
-        )}
-      </div>
+          </div>
+          <div id='pieces-number-filter'>
+            <p>Antal bitar</p>
+            <div id='pieces-number-options'>
+            {uniquePieceNumbers.map((pieceNumber) => (
+              <label key={pieceNumber}>
+                <input
+                  type='checkbox'
+                  checked={selectedPieces.includes(pieceNumber)}
+                  onChange={() => togglePieceFilter(pieceNumber)}
+                />
+                {pieceNumber}
+              </label>
+            ))}
+            </div>
+          </div>
+        </div>
+      )}
       {isLoadingPuzzles ? (
         <p>Laddar...</p>
       ) : (
