@@ -454,9 +454,21 @@ button:active {
   background-color: rgb(196, 224, 255);
   color: black;
   padding: 0px 10px;
+  font-weight: 100;
   border: gray;
   cursor: pointer;
   font-size: 4rem;
+}
+
+.add-puzzle-button-container button#filter-button {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.add-puzzle-button-container button#filter-button img {
+  width: 32px;
+  height: 32px;
+  padding-bottom: 7px;
 }
 
 .puzzle-area {
