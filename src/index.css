@@ -132,7 +132,7 @@ h1.logo {
   flex-direction: column;
   align-items: center;
   height: 111vh;
-  background-image: url('./assets/images/eb7e2c70-a771-48d4-ae3c-8cfe9f4d373f copy.jpg');
+  background-image: url('./assets/images/background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -418,7 +418,6 @@ input[type=file]::file-selector-button {
   margin-bottom: 0;
   /* padding-bottom: 30px; */
   background-color: rgb(196, 224, 255);
-  background-image: 'src/assets/images/eb7e2c70-a771-48d4-ae3c-8cfe9f4d373f copy.jpg';
 }
 
 .puzzle-area {
