@@ -109,7 +109,7 @@ const StartPage = () => {
         <div>
           <form onSubmit={handleSubmit}>
             <div className='form-control'>
-              <label className='text-shadow'>Användarnamn</label>
+              <label>Användarnamn</label>
               <input
                 type='text'
                 name='username'
@@ -118,7 +118,7 @@ const StartPage = () => {
               />
             </div>
             <div className='form-control'>
-              <label className='text-shadow'>Lösenord</label>
+              <label>Lösenord</label>
               <input
                 type='password'
                 name='password'
