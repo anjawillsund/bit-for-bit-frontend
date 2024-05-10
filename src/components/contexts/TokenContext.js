@@ -34,7 +34,7 @@ const TokenContextProvider = ({ children }) => {
 
 		// If the request body is provided and is an object, convert it to a URL-encoded string
 		if (options.body && typeof options.body === 'object') {
-      options.body = new URLSearchParams(options.body).toString();
+      options.body = new URLSearchParams(options.body).toString()
     }
 
     // Perform the fetch request with the updated headers
