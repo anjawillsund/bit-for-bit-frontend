@@ -12,11 +12,8 @@ import logOut from '../../assets/icons/logout.png'
  */
 const LogOut = () => {
 	const navigate = useNavigate()
-
 	const fetchWithToken = useContext(TokenContext)
-
 	const { resetState } = useContext(PuzzleContext)
-
 	const [errorMessage, setErrorMessage] = useState('')
 
 	/**
@@ -30,9 +27,7 @@ const LogOut = () => {
 			if (response.ok) {
 				resetState()
 				localStorage.removeItem('token')
-				const responseMessage = await response.text()
-				const message = JSON.parse(responseMessage).message
-				navigate('/', { state: { message } })
+				navigate('/')
 			} else {
 				const errorMessage = await response.text()
 				setErrorMessage(errorMessage)
@@ -51,7 +46,7 @@ const LogOut = () => {
 			/>
 			<div>
 				{errorMessage ? (
-					<p className='system-message'>Could not log out.</p>
+					<p className='system-message'>Kunde inte logga ut.</p>
 				) : (
 					null
 				)}
