@@ -81,7 +81,7 @@ const StartPage = () => {
         body: JSON.stringify({
           username: state.username,
           password: state.password
-        }) 
+        })
       })
       if (response.ok) {
         setIsUserActive(true)
@@ -100,14 +100,16 @@ const StartPage = () => {
 
   return (
     <div className='start-page'>
-      <h1 className='logo'>
-      <span className='jigsaw'><span className='green'>B</span><span className='yellow'>i</span><span className='coral'>t</span></span> <span className='handwriting'>För</span> <span className='jigsaw'><span className='green'>B</span><span className='yellow'>i</span><span className='coral'>t</span></span>
-      </h1>
+      <div className='logo-container'>
+        <h1 className='logo coiny colorful-title'>
+          Bit För Bit
+        </h1>
+      </div>
       <div className='form-container'>
         <div className='login-form form'>
           <form onSubmit={handleSubmit}>
             <div className='form-control'>
-              <label>Användarnamn</label>
+              <label className='text-shadow'>Användarnamn</label>
               <input
                 type='text'
                 name='username'
@@ -116,7 +118,7 @@ const StartPage = () => {
               />
             </div>
             <div className='form-control'>
-              <label>Lösenord</label>
+              <label className='text-shadow'>Lösenord</label>
               <input
                 type='password'
                 name='password'
@@ -147,7 +149,7 @@ const StartPage = () => {
           )}
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
