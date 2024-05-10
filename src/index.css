@@ -18,6 +18,11 @@
   src: url('./assets/fonts/Comfortaa-Regular.ttf') format('truetype');
 }
 
+:root {
+  --create-user-shadow: 2px 1px 5px rgba(34, 124, 113, 0.8);
+  --start-page-shadow: 2px 1px 5px rgb(251, 137, 88, 0.5);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -70,10 +75,7 @@ h1.logo {
   background: linear-gradient(to bottom, rgb(205, 103, 0), rgb(255, 160, 17), rgb(251, 213, 90), rgb(255, 221, 120));
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
-}
-
-.text-shadow {
-  text-shadow: 2px 1px 5px rgb(251, 137, 88, 0.5);
+  background-clip: text;
 }
 
 #navigation-title {
@@ -124,7 +126,8 @@ h1.logo {
   font-family: 'CoinyFont';
 }
 
-.start-page {
+.start-page,
+.create-user {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -135,17 +138,12 @@ h1.logo {
   background-repeat: no-repeat;
 }
 
-.create-user-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-}
-
 .form-container h2 {
   font-size: 1.7rem;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: white;
   font-weight: normal;
+  text-shadow: var(--create-user-shadow);
   margin: 20px 0;
   padding: 0;
 }
@@ -189,6 +187,7 @@ div.form-container {
 }
 
 .form-container label {
+  text-shadow: var(--start-page-shadow);
   font-family: 'ComfortaaFont', Arial, Helvetica, sans-serif;
   text-align: left;
   margin: 6px 0 0 10px;
@@ -206,26 +205,30 @@ div.form-container {
   background-color: white;
   width: 80%;
   border-radius: 15px;
-  border: 1px solid rgb(251	212	8);
-  box-shadow: 1px 2px 5px rgb(251, 137, 88, 0.5);
+  border: none;
+  box-shadow: var(--start-page-shadow);
 }
 
 .form-control button {
   margin-left: 10%;
 }
 
-.create-user-form .form-container {
-  background-color: #ff9999;
+.create-user .form-container {
+  background-color: rgb(93, 194, 183);
 }
 
-.create-user-form .form-container Button {
+.create-user .form-container label {
+  text-shadow: var(--create-user-shadow);
+}
+
+.create-user .form-container Button {
   background-color: white;
-  border: 2px solid #ff6666;
-  color: #ff6666;
+  color: rgba(44, 158, 145, 0.8);
+  box-shadow: var(--create-user-shadow);
 }
 
-.create-user-form .form-container input:focus {
-  outline: 2px solid #ff6666;
+.create-user .form-container input:focus {
+  outline: 2px solid rgba(44, 158, 145, 0.8);
   outline-offset: -4px;
 }
 
@@ -343,7 +346,8 @@ input[type=file]::file-selector-button {
 
 /* System message */
 .system-message {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: white;
   font-size: 1.4rem;
 }
 
