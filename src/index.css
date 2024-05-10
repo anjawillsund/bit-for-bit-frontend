@@ -8,6 +8,16 @@
   src: url('./assets/fonts/reenie-beanie.regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'CoinyFont';
+  src: url('./assets/fonts/coiny-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ComfortaaFont';
+  src: url('./assets/fonts/Comfortaa-Regular.ttf') format('truetype');
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -25,7 +35,6 @@ body {
 
 .App {
   text-align: center;
-  /* background-color: rgb(196, 224, 255); */
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -40,12 +49,31 @@ body {
 }
 
 /* Form pages */
+.logo-container {
+  display: block;
+  width: 100%;
+  height: 10%;
+  margin: 10rem 0 2rem 0;
+  position: relative;
+  background-color: rgb(255, 255, 255, 0.6);
+}
+
 h1.logo {
+  margin-top: 0.8rem;
   font-size: 4rem;
   font-weight: 100;
-  margin: 10rem 0 0 0;
   padding: 0;
   transform: scaleY(1.4);
+}
+
+.colorful-title {
+  background: linear-gradient(to bottom, rgb(205, 103, 0), rgb(255, 160, 17), rgb(251, 213, 90), rgb(255, 221, 120));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.text-shadow {
+  text-shadow: 2px 1px 5px rgb(251, 137, 88, 0.5);
 }
 
 #navigation-title {
@@ -76,7 +104,6 @@ h1.logo {
 .coral {
   color: #ff6666;
   text-shadow: 1px 0px 1px #b34a4a;
-
 }
 
 .blue {
@@ -93,12 +120,19 @@ h1.logo {
   font-size: 5rem;
 }
 
+.coiny {
+  font-family: 'CoinyFont';
+}
+
 .start-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  background-color: rgb(69, 143, 230);
+  height: 111vh;
+  background-image: url('./assets/images/eb7e2c70-a771-48d4-ae3c-8cfe9f4d373f copy.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .create-user-form {
@@ -116,12 +150,9 @@ h1.logo {
   padding: 0;
 }
 
-.form-container {
-  background-color: rgb(69, 143, 230);
+div.form-container {
+  background-color: rgb(250, 212, 88);
   border-radius: 20px;
-  /* border-color: rgb(36, 85, 141);
-  border-width: 3px;
-  border-style: solid; */
   box-sizing: border-box;
   height: auto;
   padding: 20px;
@@ -153,28 +184,30 @@ h1.logo {
 }
 
 .start-page .form-container input:focus {
-  outline: 2px solid rgb(19, 58, 102);
+  outline: 2px solid rgb(251, 137, 88, 0.9);
   outline-offset: -4px;
 }
 
 .form-container label {
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: 'ComfortaaFont', Arial, Helvetica, sans-serif;
   text-align: left;
   margin: 6px 0 0 10px;
   padding: 0;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .form-container Button {
-  color: rgb(36, 85, 141);
+  color: rgb(251, 137, 88, 0.9);
   margin: 8px 0 0 0;
   height: 35px;
+  padding-top: 5px;
   font-size: 1.2rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'ComfortaaFont', Arial, Helvetica, sans-serif;
   background-color: white;
   width: 80%;
   border-radius: 15px;
-  border: 1px solid rgb(36, 85, 141);
+  border: 1px solid rgb(251	212	8);
+  box-shadow: 1px 2px 5px rgb(251, 137, 88, 0.5);
 }
 
 .form-control button {
@@ -381,6 +414,7 @@ input[type=file]::file-selector-button {
   margin-bottom: 0;
   /* padding-bottom: 30px; */
   background-color: rgb(196, 224, 255);
+  background-image: 'src/assets/images/eb7e2c70-a771-48d4-ae3c-8cfe9f4d373f copy.jpg';
 }
 
 .puzzle-area {
