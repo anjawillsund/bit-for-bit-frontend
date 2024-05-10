@@ -85,9 +85,9 @@ const StartPage = () => {
       })
       if (response.ok) {
         setIsUserActive(true)
-        const { message, token } = await response.json()
+        const token = await response.json()
         localStorage.setItem('token', token)
-        navigate('/my-puzzles', { state: { message } })
+        navigate('/my-puzzles')
       } else {
         const errorMessage = await response.text()
         console.log(errorMessage)
@@ -106,7 +106,7 @@ const StartPage = () => {
         </h1>
       </div>
       <div className='form-container'>
-        <div className='login-form form'>
+        <div>
           <form onSubmit={handleSubmit}>
             <div className='form-control'>
               <label className='text-shadow'>Användarnamn</label>
