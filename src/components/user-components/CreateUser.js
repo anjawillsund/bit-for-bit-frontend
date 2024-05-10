@@ -79,7 +79,6 @@ const CreateUser = () => {
       <div className='form-container'>
         <div>
           <form onSubmit={handleSubmit}>
-            <h2>Skapa ett konto</h2>
             <div className='form-control'>
               <label>Användarnamn</label>
               <input
