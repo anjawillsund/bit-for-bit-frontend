@@ -258,6 +258,7 @@ div.form-container {
   color: rgba(44, 158, 145, 0.8);
   box-shadow: var(--create-user-shadow);
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-grow: 1;
   overflow-wrap: break-word;
