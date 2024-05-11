@@ -589,7 +589,7 @@ button:active {
   display: flex;
   flex-direction: row;
   background-color: var(--transparent);
-  justify-content:space-evenly;
+  /* justify-content:space-evenly; */
   border-radius: 5px;
   padding: 10px 5px;
 }
@@ -603,9 +603,12 @@ input[type=radio] {
   flex-direction: column;
   text-align: left;
   border: 4px dotted rgb(233, 76, 98);
+  width: 50%;
+  padding: 10px 20px 0;
 }
 
 fieldset div label {
+  font-size: 1.2rem;
   display: block;
   margin: 5px 0;
   font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -617,11 +620,34 @@ fieldset div label.active-option {
 
 #pieces-number-filter {
   display: block;
-  border: 2px dotted rgb(82, 148, 16);
+  border: 4px dotted rgb(82, 148, 16);
+  width: 50%;
+  padding: 0 10px;
+}
+
+/* #pieces-number-options {
+  display: inline-block;
+} */
+
+#pieces-number-options input[type='checkbox'] {
+  accent-color: rgb(93, 163, 23);
 }
 
 #pieces-number-options {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+#pieces-number-options li {
   display: inline-block;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  flex: 0 0 48%;
+  text-align: left;
+  font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .puzzles p {
