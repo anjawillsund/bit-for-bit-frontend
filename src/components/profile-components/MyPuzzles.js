@@ -67,7 +67,6 @@ const MyPuzzles = () => {
   const uniquePieceNumbers = [...new Set(puzzlesArray.map((puzzle) => puzzle.piecesNumber))].filter(Boolean).sort((a, b) => a - b)
 
   const handleToggleFilter = () => {
-    // setShowFilters(showFilters)
     setShowFilters(!showFilters)
   }
 
@@ -85,39 +84,40 @@ const MyPuzzles = () => {
             buttonText='+'
           />
         </div>
-        {/* {showFilters && ( */}
-        <div className='filter-field'>
-          <fieldset id='lent-out-button-field' onChange={handleToggleLentOutFilter}>
-            <div>
-              <input type="radio" id="lent" name="lentOption" value="lent" checked={selectedOption === 'lent'} onChange={handleOptionChange} />
-              <label for="lent" className={`${lentOutFilter === 'lent' ? 'active-option' : ''}`}>Utlånade</label>
-            </div>
-            <div>
-              <input type="radio" id="notLent" name="lentOption" value="notLent" checked={selectedOption === 'notLent'} onChange={handleOptionChange} />
-              <label for="notLent" className={`${lentOutFilter === 'notLent' ? 'active-option' : ''}`}>Inte utlånade</label>
-            </div>
-            <div>
-              <input type="radio" id="all" name="lentOption" value="lentOption" checked={selectedOption === 'all'} onChange={handleOptionChange} />
-              <label for="all" className={`${lentOutFilter === 'all' ? 'active-option' : ''}`}>Alla</label>
-            </div>
-          </fieldset>
-          <div id='pieces-number-filter'>
-            <p>Antal bitar</p>
-            <div id='pieces-number-options'>
-              {uniquePieceNumbers.map((pieceNumber) => (
-                <label key={pieceNumber}>
-                  <input
-                    type='checkbox'
-                    checked={selectedPieces.includes(pieceNumber)}
-                    onChange={() => togglePieceFilter(pieceNumber)}
-                  />
-                  {pieceNumber}
-                </label>
-              ))}
+        {showFilters && (
+          <div className='filter-field'>
+            <fieldset id='lent-out-button-field' onChange={handleToggleLentOutFilter}>
+              <div>
+                <input type="radio" id="lent" name="lentOption" value="lent" checked={selectedOption === 'lent'} onChange={handleOptionChange} />
+                <label for="lent" className={`${lentOutFilter === 'lent' ? 'active-option' : ''}`}>Utlånade</label>
+              </div>
+              <div>
+                <input type="radio" id="notLent" name="lentOption" value="notLent" checked={selectedOption === 'notLent'} onChange={handleOptionChange} />
+                <label for="notLent" className={`${lentOutFilter === 'notLent' ? 'active-option' : ''}`}>Inte utlånade</label>
+              </div>
+              <div>
+                <input type="radio" id="all" name="lentOption" value="lentOption" checked={selectedOption === 'all'} onChange={handleOptionChange} />
+                <label for="all" className={`${lentOutFilter === 'all' ? 'active-option' : ''}`}>Alla</label>
+              </div>
+            </fieldset>
+            <div id='pieces-number-filter'>
+              <ul id='pieces-number-options'>
+                {uniquePieceNumbers.map((pieceNumber) => (
+                  <li key={pieceNumber}>
+                    <label key={pieceNumber}>
+                      <input
+                        type='checkbox'
+                        checked={selectedPieces.includes(pieceNumber)}
+                        onChange={() => togglePieceFilter(pieceNumber)}
+                      />
+                      {pieceNumber}
+                    </label>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        </div>
-        {/* )} */}
+        )}
       </div>
       <div className='puzzles'>
         {isLoadingPuzzles ? (
