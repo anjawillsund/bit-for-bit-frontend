@@ -3,10 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { PuzzleContext } from '../contexts/PuzzleContext'
 import { useNavigate, Link } from 'react-router-dom'
 import nullPuzzleImage from '../../assets/images/null-puzzle.jpeg'
-import filter from '../../assets/icons/filter.png'
-import lentImage from '../../assets/icons/lent-out-red.png'
-import notLentImage from '../../assets/icons/lent-out-yellow.png'
-import allImage from '../../assets/icons/lent-out-green.png'
+import filter from '../../assets/icons/filter-white.png'
 
 /**
  * Renders a list of the user's puzzles.
@@ -21,6 +18,12 @@ const MyPuzzles = () => {
 
   const [selectedPieces, setSelectedPieces] = useState([])
   const [showFilters, setShowFilters] = useState(false)
+
+  const [selectedOption, setSelectedOption] = useState('all')
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value)
+  }
 
   useEffect(() => {
     async function loadData() {
@@ -37,16 +40,16 @@ const MyPuzzles = () => {
     navigate('/add-puzzle')
   }
 
-  const toggleLentOutFilter = () => {
-    switch (lentOutFilter) {
+  const handleToggleLentOutFilter = (event) => {
+    switch (event.target.value) {
       case 'all':
-        setLentOutFilter('lent')
+        setLentOutFilter('all')
         break
       case 'lent':
-        setLentOutFilter('notLent')
+        setLentOutFilter('lent')
         break
       case 'notLent':
-        setLentOutFilter('all')
+        setLentOutFilter('notLent')
         break
       default:
         setLentOutFilter('all')
@@ -64,91 +67,103 @@ const MyPuzzles = () => {
   const uniquePieceNumbers = [...new Set(puzzlesArray.map((puzzle) => puzzle.piecesNumber))].filter(Boolean).sort((a, b) => a - b)
 
   const handleToggleFilter = () => {
+    // setShowFilters(showFilters)
     setShowFilters(!showFilters)
   }
 
   return (
-    <div className='puzzles'>
-      <div className='add-puzzle-button-container'>
-        <Button
-          id='filter-button'
-          onClick={handleToggleFilter}
-          imageSrc={filter}
-        />
-        <Button
-          onClick={handleAddPuzzle}
-          buttonText='+'
-        />
-        {showFilters && (
-          <div className='filter-field'>
-            <div id='lent-out-button-field'>
-              <Button
-                id='lent-out-button'
-                onClick={toggleLentOutFilter}
-                imageSrc={lentOutFilter === 'all' ? allImage : lentOutFilter === 'lent' ? lentImage : notLentImage}
-              />
+    <>
+      <div className='option-button-container'>
+        <div className='main-options-area'>
+          <Button
+            id='filter-button'
+            onClick={handleToggleFilter}
+            imageSrc={filter}
+          />
+          <Button
+            onClick={handleAddPuzzle}
+            buttonText='+'
+          />
+        </div>
+        {/* {showFilters && ( */}
+        <div className='filter-field'>
+          <fieldset id='lent-out-button-field' onChange={handleToggleLentOutFilter}>
+            <div>
+              <input type="radio" id="lent" name="lentOption" value="lent" checked={selectedOption === 'lent'} onChange={handleOptionChange} />
+              <label for="lent">Utlånade</label>
             </div>
-            <div id='pieces-number-filter'>
-              <p>Antal bitar</p>
-              <div id='pieces-number-options'>
-                {uniquePieceNumbers.map((pieceNumber) => (
-                  <label key={pieceNumber}>
-                    <input
-                      type='checkbox'
-                      checked={selectedPieces.includes(pieceNumber)}
-                      onChange={() => togglePieceFilter(pieceNumber)}
-                    />
-                    {pieceNumber}
-                  </label>
-                ))}
-              </div>
+            <div>
+              <input type="radio" id="notLent" name="lentOption" value="notLent" checked={selectedOption === 'notLent'} onChange={handleOptionChange} />
+              <label for="notLent">Inte utlånade</label>
+            </div>
+            <div>
+              <input type="radio" id="all" name="lentOption" value="lentOption" checked={selectedOption === 'all'} onChange={handleOptionChange} />
+              <label for="all">Alla</label>
+            </div>
+          </fieldset>
+          <div id='pieces-number-filter'>
+            <p>Antal bitar</p>
+            <div id='pieces-number-options'>
+              {uniquePieceNumbers.map((pieceNumber) => (
+                <label key={pieceNumber}>
+                  <input
+                    type='checkbox'
+                    checked={selectedPieces.includes(pieceNumber)}
+                    onChange={() => togglePieceFilter(pieceNumber)}
+                  />
+                  {pieceNumber}
+                </label>
+              ))}
             </div>
           </div>
+        </div>
+        {/* )} */}
+      </div>
+      <div className='puzzles'>
+        {isLoadingPuzzles ? (
+          <div className='loading'>
+            <p>Laddar...</p>
+          </div>
+        ) : (
+          <ul>
+            {puzzlesArray.length > 0 ? (puzzlesArray.map((puzzle) => (lentOutFilter === 'notLent' && puzzle.isLentOut) || (lentOutFilter === 'lent' && !puzzle.isLentOut) || (selectedPieces.length > 0 && !selectedPieces.includes(puzzle.piecesNumber)) ? null : (
+              <li key={puzzle.id} className="puzzle-item">
+                <Link to={`/puzzles/${puzzle.id}`}>
+                  <div className={`image-container ${puzzle.isLentOut ? 'lent-out' : ''}`}>
+                    {puzzle.imageUrl ? (
+                      <img
+                        src={puzzle.imageUrl}
+                        alt={puzzle.title}
+                      />
+                    ) : (
+                      <img
+                        src={nullPuzzleImage}
+                        alt={''}
+                      />
+                    )}
+                  </div>
+                  <div className="text-content">
+                    <h3>
+                      <span className='blue'>&#183;&#183;&#183; </span>
+                      {puzzle.title}
+                      <span className='blue'> &#183;&#183;&#183;</span>
+                    </h3>
+                    <p>
+                      <span className='green'>{puzzle.piecesNumber ? (puzzle.piecesNumber) : ('-')}</span>
+                      <span className='blue'> &#183; </span>
+                      <span className='yellow'>{puzzle.manufacturer ? (puzzle.manufacturer) : ('-')}</span>
+                    </p>
+                  </div>
+                </Link>
+              </li>
+            ))
+            ) : (
+              <p>Inga pussel att visa</p>
+            )}
+          </ul>
         )}
       </div>
-      {isLoadingPuzzles ? (
-        <div className='loading'>
-          <p>Laddar...</p>
-        </div>
-      ) : (
-        <ul>
-          {puzzlesArray.length > 0 ? (puzzlesArray.map((puzzle) => (lentOutFilter === 'notLent' && puzzle.isLentOut) || (lentOutFilter === 'lent' && !puzzle.isLentOut) || (selectedPieces.length > 0 && !selectedPieces.includes(puzzle.piecesNumber)) ? null : (
-            <li key={puzzle.id} className="puzzle-item">
-              <Link to={`/puzzles/${puzzle.id}`}>
-                <div className={`image-container ${puzzle.isLentOut ? 'lent-out' : ''}`}>
-                  {puzzle.imageUrl ? (
-                    <img
-                      src={puzzle.imageUrl}
-                      alt={puzzle.title}
-                    />
-                  ) : (
-                    <img
-                      src={nullPuzzleImage}
-                      alt={''}
-                    />
-                  )}
-                </div>
-                <div className="text-content">
-                  <h3>
-                    <span className='blue'>&#183;&#183;&#183; </span>
-                    {puzzle.title}
-                    <span className='blue'> &#183;&#183;&#183;</span>
-                  </h3>
-                  <p>
-                    <span className='green'>{puzzle.piecesNumber ? (puzzle.piecesNumber) : ('-')}</span>
-                    <span className='blue'> &#183; </span>
-                    <span className='yellow'>{puzzle.manufacturer ? (puzzle.manufacturer) : ('-')}</span>
-                  </p>
-                </div>
-              </Link>
-            </li>
-          ))
-          ) : (
-            <p>Inga pussel att visa</p>
-          )}
-        </ul>
-      )}
-    </div>
+    </>
   )
 }
 
