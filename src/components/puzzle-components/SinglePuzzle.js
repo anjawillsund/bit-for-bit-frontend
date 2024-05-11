@@ -48,6 +48,7 @@ const SinglePuzzle = () => {
                     <img src={nullPuzzleImage} alt={''} />
                 )
                 }
+                <div className='puzzle-text'>
                 <h3>{puzzle.title}</h3>
                 <p><span className='heavy'>Antal bitar:</span> {puzzle.piecesNumber ? (puzzle.piecesNumber) : ('-')}</p>
                 {puzzle.piecesNumber ? (<p><span className='heavy'>Antal saknade bitar:</span> {!puzzle.complete ? (puzzle.missingPiecesNumber) : ('0')}</p>) : null}
@@ -58,16 +59,17 @@ const SinglePuzzle = () => {
                 <p><span className='heavy'>Privat anteckning:</span> {puzzle.privateNote ? (puzzle.privateNote) : ('-')}</p>
                 <p><span className='heavy'>Delad anteckning:</span> {puzzle.sharedNote ? (puzzle.sharedNote) : ('-')}</p>
                 {puzzle.isLentOut ? (<p><span className='heavy'>Utlånat till:</span> {puzzle.lentOutToString}</p>) : null}
-            </div>
-            <div className='button-area'>
-            <Button
-                onClick={handleGoToAllPuzzles}
-                buttonText='Visa alla pussel'
-            />
-            <Button
-                onClick={handleEditPuzzle}
-                buttonText='Ändra'
-            />
+                </div>
+                <div className='button-area'>
+                    <Button
+                        onClick={handleGoToAllPuzzles}
+                        buttonText='Visa alla pussel'
+                    />
+                    <Button
+                        onClick={handleEditPuzzle}
+                        buttonText='Ändra'
+                    />
+                </div>
             </div>
         </div>
     )
