@@ -226,6 +226,7 @@ div.form-container {
 
 .form-container Button {
   color: rgb(251, 137, 88, 0.9);
+  font-weight: normal;
   margin: 8px 0 0 0;
   height: 35px;
   padding-top: 5px;
@@ -240,6 +241,7 @@ div.form-container {
 
 .form-control button {
   margin-left: 10%;
+  font-weight: normal;
 }
 
 .create-user .form-container {
@@ -252,6 +254,7 @@ div.form-container {
 
 .create-user .form-container Button {
   background-color: white;
+  font-weight: normal;
   color: rgba(44, 158, 145, 0.8);
   box-shadow: var(--create-user-shadow);
 }
@@ -291,6 +294,7 @@ div.form-container {
 }
 
 .puzzle-form button {
+  font-weight: normal;
   margin-top: 15px;
 }
 
@@ -495,6 +499,7 @@ input[type=file]::file-selector-button {
 }
 
 .puzzle-area Button {
+  font-weight: normal;
   display: inline-block;
   background-image: var(--form-buttons);
   color: white;
