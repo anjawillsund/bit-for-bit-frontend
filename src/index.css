@@ -83,10 +83,20 @@ h1.logo {
 }
 
 .colorful-title {
-  background: linear-gradient(to bottom, rgb(205, 103, 0), rgb(255, 160, 17), rgb(251, 213, 90), rgb(255, 221, 120));
+  color: white;
+}
+
+.create-user > .logo-container > .colorful-title {
+  text-shadow: 2px 2px 3px rgb(26, 114, 104);
+}
+
+.start-page > .logo-container > .colorful-title {
+  /* background: linear-gradient(to bottom, rgb(205, 103, 0), rgb(255, 160, 17), rgb(251, 213, 90), rgb(255, 221, 120));
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
-  background-clip: text;
+  background-clip: text; */
+  /* color: white; */
+  text-shadow: 2px 2px 3px rgb(201, 126, 14);
 }
 
 #navigation-title {
@@ -95,6 +105,7 @@ h1.logo {
   font-weight: 100;
   padding: 0;
   transform: scaleY(1.4);
+  text-shadow: 0px 2px 3px rgb(255, 160, 17, 0.5);
 }
 /* 
 #navigation-title .handwriting {
@@ -105,22 +116,28 @@ h1.logo {
 } */
 
 .green {
-  color: #6ac96a;
-  text-shadow: 1px 0px 1px #3e7a3e;
+  /* font-size: 1.5rem; */
+  /* vertical-align: sub; */
+  color: rgb(82, 148, 16);
+  /* text-shadow: 1px 0px 1px #3e7a3e; */
 }
 
 .yellow {
-  color: yellow;
-  text-shadow: 1px 0px 1px rgb(142, 142, 2);
+  /* font-size: 1.5rem; */
+  color: rgb(219, 162, 3);
+  /* vertical-align: sub; */
 }
 
-.coral {
-  color: #ff6666;
-  text-shadow: 1px 0px 1px #b34a4a;
+.red {
+  font-size: 1.5rem;
+  color: rgb(233, 76, 98);
+  vertical-align: sub;
 }
 
 .blue {
-  color: rgb(69, 143, 230);
+  font-size: 1.5rem;
+  vertical-align: sub;
+  color: rgb(3, 129, 157);
 }
 
 .jigsaw {
@@ -143,10 +160,10 @@ h1.logo {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-image: url('./assets/images/background.jpg');
-  background-size: cover;
+  /* background-image: url('./assets/images/background.jpg'); */
+  /* background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 }
 
 .form-container h2 {
@@ -598,7 +615,7 @@ button:active {
   padding: 0;
   text-align: center;
   margin-bottom: 10px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .puzzles ul {
@@ -633,13 +650,17 @@ button:active {
 }
 
 .puzzles ul li h3 {
-  font-size: 0.8rem;
+  font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  /* color: rgb(3, 174, 212), rgb(4, 145, 176), rgb(0, 62, 76); */
+  color: rgb(3, 129, 157);
+  font-size: 1rem;
   margin: 0;
 }
 
 .puzzles ul li p {
-  font-size: 0.8rem;
-  margin: 0;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin: 0 0 3px 0;
   text-align: left
 }
 
@@ -671,12 +692,13 @@ button:active {
   display: flex;
   justify-content: center;
   height: 100vh;
+  color: white;
+  font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .loading p {
   font-size: 1.5rem;
   margin-top: 50px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 /* Cursor */
