@@ -49,7 +49,7 @@ const SinglePuzzle = () => {
                 )
                 }
                 <div className='puzzle-text'>
-                <h3>{puzzle.title}</h3>
+                <h3 className='yellow'>{puzzle.title}</h3>
                 <p><span className='heavy'>Antal bitar:</span> {puzzle.piecesNumber ? (puzzle.piecesNumber) : ('-')}</p>
                 {puzzle.piecesNumber ? (<p><span className='heavy'>Antal saknade bitar:</span> {!puzzle.complete ? (puzzle.missingPiecesNumber) : ('0')}</p>) : null}
                 <p><span className='heavy'>Storlek i cm:</span> {puzzle.sizeWidth ? (`${puzzle.sizeWidth} x ${puzzle.sizeHeight}`) : ('-')}</p>
