@@ -580,7 +580,7 @@ button:active {
 
 .option-button-container button#filter-button {
   margin-top: 0;
-  /* padding-top: 0; */
+  padding-top: 8px;
 }
 
 .option-button-container button#filter-button img {
