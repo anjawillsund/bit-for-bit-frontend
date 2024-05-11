@@ -4,8 +4,9 @@ import { PuzzleContext } from '../contexts/PuzzleContext'
 import { useNavigate, Link } from 'react-router-dom'
 import nullPuzzleImage from '../../assets/images/null-puzzle.jpeg'
 import filter from '../../assets/icons/filter.png'
-import lentOut from '../../assets/icons/lent-out.png'
-
+import lentImage from '../../assets/icons/lent-out-red.png'
+import notLentImage from '../../assets/icons/lent-out-yellow.png'
+import allImage from '../../assets/icons/lent-out-green.png'
 
 /**
  * Renders a list of the user's puzzles.
@@ -18,7 +19,6 @@ const MyPuzzles = () => {
 
   const { fetchUserPuzzles, puzzlesArray, isLoadingPuzzles, setIsLoadingPuzzles } = useContext(PuzzleContext)
 
-  const [hideLentOut, setHideLentOut] = useState(false)
   const [selectedPieces, setSelectedPieces] = useState([])
   const [showFilters, setShowFilters] = useState(false)
 
@@ -31,12 +31,26 @@ const MyPuzzles = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const [lentOutFilter, setLentOutFilter] = useState('all')
+
   const handleAddPuzzle = () => {
     navigate('/add-puzzle')
   }
 
   const toggleLentOutFilter = () => {
-    setHideLentOut(!hideLentOut)
+    switch (lentOutFilter) {
+      case 'all':
+        setLentOutFilter('lent')
+        break
+      case 'lent':
+        setLentOutFilter('notLent')
+        break
+      case 'notLent':
+        setLentOutFilter('all')
+        break
+      default:
+        setLentOutFilter('all')
+    }
   }
 
   const togglePieceFilter = (pieceNumber) => {
@@ -65,38 +79,40 @@ const MyPuzzles = () => {
           onClick={handleAddPuzzle}
           buttonText='+'
         />
-      </div>
-      {showFilters && (
-        <div className='filter-field'>
-          <div id='lent-out-button-field'>
-            <Button
-              id='lent-out-button'
-              onClick={toggleLentOutFilter}
-              imageSrc={lentOut}
-            />
-          </div>
-          <div id='pieces-number-filter'>
-            <p>Antal bitar</p>
-            <div id='pieces-number-options'>
-            {uniquePieceNumbers.map((pieceNumber) => (
-              <label key={pieceNumber}>
-                <input
-                  type='checkbox'
-                  checked={selectedPieces.includes(pieceNumber)}
-                  onChange={() => togglePieceFilter(pieceNumber)}
-                />
-                {pieceNumber}
-              </label>
-            ))}
+        {showFilters && (
+          <div className='filter-field'>
+            <div id='lent-out-button-field'>
+              <Button
+                id='lent-out-button'
+                onClick={toggleLentOutFilter}
+                imageSrc={lentOutFilter === 'all' ? allImage : lentOutFilter === 'lent' ? lentImage : notLentImage}
+              />
+            </div>
+            <div id='pieces-number-filter'>
+              <p>Antal bitar</p>
+              <div id='pieces-number-options'>
+                {uniquePieceNumbers.map((pieceNumber) => (
+                  <label key={pieceNumber}>
+                    <input
+                      type='checkbox'
+                      checked={selectedPieces.includes(pieceNumber)}
+                      onChange={() => togglePieceFilter(pieceNumber)}
+                    />
+                    {pieceNumber}
+                  </label>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
       {isLoadingPuzzles ? (
-        <p>Laddar...</p>
+        <div className='loading'>
+          <p>Laddar...</p>
+        </div>
       ) : (
         <ul>
-          {puzzlesArray.length > 0 ? (puzzlesArray.map((puzzle) => (hideLentOut && puzzle.isLentOut) || (selectedPieces.length > 0 && !selectedPieces.includes(puzzle.piecesNumber)) ? null : (
+          {puzzlesArray.length > 0 ? (puzzlesArray.map((puzzle) => (lentOutFilter === 'notLent' && puzzle.isLentOut) || (lentOutFilter === 'lent' && !puzzle.isLentOut) || (selectedPieces.length > 0 && !selectedPieces.includes(puzzle.piecesNumber)) ? null : (
             <li key={puzzle.id} className="puzzle-item">
               <Link to={`/puzzles/${puzzle.id}`}>
                 <div className={`image-container ${puzzle.isLentOut ? 'lent-out' : ''}`}>
@@ -113,8 +129,16 @@ const MyPuzzles = () => {
                   )}
                 </div>
                 <div className="text-content">
-                  <h3>{puzzle.title}</h3>
-                  <p>Antal bitar: {puzzle.piecesNumber ? (puzzle.piecesNumber) : ('-')}</p>
+                  <h3>
+                    <span className='blue'>&#183;&#183;&#183; </span>
+                    {puzzle.title}
+                    <span className='blue'> &#183;&#183;&#183;</span>
+                  </h3>
+                  <p>
+                    <span className='green'>{puzzle.piecesNumber ? (puzzle.piecesNumber) : ('-')}</span>
+                    <span className='blue'> &#183; </span>
+                    <span className='yellow'>{puzzle.manufacturer ? (puzzle.manufacturer) : ('-')}</span>
+                  </p>
                 </div>
               </Link>
             </li>
