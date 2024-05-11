@@ -571,8 +571,8 @@ button:active {
 .option-button-container button {
   background-color: transparent;
   color: white;
-  padding-left: 0 10px;
-  /* font-weight: 100; */
+  padding: 0 10px;
+  text-shadow: var(--create-user-shadow);
   border: none;
   cursor: pointer;
   font-size: 4rem;
