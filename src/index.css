@@ -21,6 +21,7 @@
 :root {
   --create-user-shadow: 2px 1px 5px rgba(34, 124, 113, 0.8);
   --start-page-shadow: 2px 1px 5px rgb(251, 137, 88, 0.5);
+  --form-buttons: linear-gradient(to bottom, rgb(3, 174, 212), rgb(4, 145, 176), rgb(0, 62, 76));
 }
 
 #root {
@@ -28,6 +29,8 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: auto;
+  /* padding-bottom: 30px; */
   /* background-position: 20%; */
 }
 
@@ -247,9 +250,26 @@ div.form-container {
   align-items: left;
 }
 
+.puzzle-text {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  font-size: 1.2rem;
+  margin: 10px 10px 0 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: block;
+  width: 90vw;
+  padding: 0 10px;
+}
+
+.puzzle-text h3 {
+  font-size: 2rem;
+}
+
 .puzzle-form label {
   font-size: 1.2rem;
-  margin: 10px 0 0 0;
+  margin: 10px 10px 0 10px;
 }
 
 .puzzle-form button {
@@ -312,12 +332,14 @@ textarea input[type=text] {
 input[type=file]::file-selector-button {
   content: 'Välj bild';
   display: inline-block;
-  background-color: rgb(69, 143, 230);
+  background-image: var(--form-buttons);
+  /* background-color: rgb(69, 143, 230); */
+  font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: white;
   border: none;
   margin: 5px;
   border-radius: 5px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
   padding: 5px 10px;
   cursor: pointer;
   font-size: 1.2rem;
@@ -430,6 +452,7 @@ input[type=file]::file-selector-button {
   /* background-color: rgb(196, 224, 255); */
   /* background-image: url('./assets/images/background.jpg'); */
   background-color: transparent;
+  border-radius: 5px;
   /* background-size: cover;
   background-position: center;
   background-repeat: no-repeat; */
@@ -440,28 +463,37 @@ input[type=file]::file-selector-button {
   flex-direction: column;
   align-items: center;
   justify-content: top;
-  height: 100%;
+  /* height: 100%; */
+  padding-bottom: 30px;
+  margin-top: 10px;
+  border-radius: 5px;
 }
 
 .button-area {
   display: flex;
   justify-content: center;
   margin-top: 15px;
-  background-color: rgb(196, 224, 255);
+  /* background-color: rgb(196, 224, 255); */
 }
 
 .puzzle-area Button {
   display: inline-block;
-  background-color: rgb(69, 143, 230);
+  background-image: var(--form-buttons);
   color: white;
   border: none;
   margin-left: 5px;
   margin-right: 5px;
   border-radius: 5px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
-  padding: 5px 10px;
+  font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.692);
+  padding: 9px 10px 5px 10px;
+  text-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   font-size: 1.2rem;
+}
+
+.puzzle-area input[type='checkbox'] {
+  accent-color: #c86304;
 }
 
 button:active {
@@ -474,18 +506,23 @@ button:active {
   position: relative;
   width: 100%;
   text-align: left;
+  border-radius: 5px;
+  padding-bottom: 30px;
+  background-color: rgb(255, 255, 255, 0.8);
+  color: rgb(0, 79, 96);
+  font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .puzzle-info img {
   width: 95vw;
-  margin: 5px 0;
+  margin: 0 0 5px 0;
   display: block;
   border-radius: 5px;
   object-fit: contain;
 }
 
 .heavy {
-  font-weight: 600;
+  font-weight: bold;
 }
 
 /* Puzzles */
@@ -553,10 +590,6 @@ button:active {
 #pieces-number-options {
   display: inline-block;
 }
-
-/* .puzzle-area {
-  background-color: rgb(196, 224, 255);
-} */
 
 .puzzles p {
   font-size: 1.5rem;
@@ -631,7 +664,7 @@ button:active {
 }
 
 .button-area #delete-button {
-  background-color: #bb4d4d;
+  background-image: linear-gradient(to bottom, rgb(201, 115, 105), rgb(195, 69, 56), rgb(149, 30, 16));
 }
 
 .loading {
