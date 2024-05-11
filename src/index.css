@@ -22,6 +22,7 @@
   --create-user-shadow: 2px 1px 5px rgba(34, 124, 113, 0.8);
   --start-page-shadow: 2px 1px 5px rgb(251, 137, 88, 0.5);
   --form-buttons: linear-gradient(to bottom, rgb(3, 174, 212), rgb(4, 145, 176), rgb(0, 62, 76));
+  --transparent: rgba(255, 255, 255, 0.8);
 }
 
 #root {
@@ -525,7 +526,7 @@ button:active {
   text-align: left;
   border-radius: 5px;
   padding-bottom: 30px;
-  background-color: rgb(255, 255, 255, 0.8);
+  background-color: var(--transparent);
   color: rgb(0, 79, 96);
   font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -548,60 +549,75 @@ button:active {
   height: 100%;
   overflow: auto;
   padding-bottom: 5%;
-  /* background-color: rgb(196, 224, 255); */
 }
 
-.add-puzzle-button-container {
+.option-button-container {
   display: flex;
-  justify-content: right;
-  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  width: 95vw;
 }
 
-.add-puzzle-button-container button {
-  /* background-color: rgb(196, 224, 255); */
+.option-button-container button {
   background-color: transparent;
   color: white;
-  padding: 0px 10px;
-  font-weight: 100;
-  border: gray;
+  padding-left: 0 10px;
+  /* font-weight: 100; */
+  border: none;
   cursor: pointer;
   font-size: 4rem;
 }
 
-.add-puzzle-button-container button#filter-button {
+.option-button-container button#filter-button {
   margin-top: 0;
-  padding-top: 0;
+  /* padding-top: 0; */
 }
 
-.add-puzzle-button-container button#filter-button img {
+.option-button-container button#filter-button img {
   width: 32px;
   height: 32px;
   padding-bottom: 7px;
 }
 
+.main-options-area {
+  display: flex;
+  justify-content: right;
+  margin-top: 10px;
+}
+
 .filter-field {
   display: flex;
-  flex-direction: column;
-  align-items: left;
+  flex-direction: row;
+  background-color: var(--transparent);
+  justify-content:space-evenly;
+  border-radius: 5px;
+  padding: 10px 5px;
+}
+
+input[type=radio] {
+  display: none;
 }
 
 #lent-out-button-field {
   display: flex;
-  clear: both;
+  flex-direction: column;
+  text-align: left;
+  border: 4px dotted rgb(233, 76, 98);
 }
 
-#lent-out-button {
-  background-color: transparent;
-  border: none;
+fieldset div label {
+  display: block;
+  margin: 5px 0;
+  font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-#lent-out-button img {
-  width: 40px;
-  height: 40px;
+fieldset div label.active-option {
+  font-weight: bold;
 }
 
 #pieces-number-filter {
   display: block;
+  border: 2px dotted rgb(82, 148, 16);
 }
 
 #pieces-number-options {
