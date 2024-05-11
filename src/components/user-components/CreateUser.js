@@ -110,7 +110,7 @@ const CreateUser = () => {
               <button type='submit'>Skapa</button>
             </div>
           </form>
-          <Link to='/'><Button className='go-to-login-button' buttonText='Tillbaka till startsidan' /></Link>
+          <Link to='/'><Button buttonText='Tillbaka till startsidan' /></Link>
           <div>
             {errorMessage ? (
               <p className='system-message'>{errorMessage}</p>
