@@ -257,6 +257,10 @@ div.form-container {
   font-weight: normal;
   color: rgba(44, 158, 145, 0.8);
   box-shadow: var(--create-user-shadow);
+  /* display: flex; */
+  justify-content: center;
+  flex-grow: 1;
+  overflow-wrap: break-word;
 }
 
 .create-user .form-container input:focus {
