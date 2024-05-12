@@ -4,6 +4,7 @@ import { PuzzleContext } from '../contexts/PuzzleContext'
 import { useNavigate, Link } from 'react-router-dom'
 import nullPuzzleImage from '../../assets/images/null-puzzle.jpeg'
 import filter from '../../assets/icons/filter-white.png'
+import { useTokenContext } from '../contexts/TokenContext'
 
 /**
  * Renders a list of the user's puzzles.
@@ -12,13 +13,11 @@ import filter from '../../assets/icons/filter-white.png'
  * @returns {JSX.Element} The JSX element representing the ShowGroups component.
  */
 const MyPuzzles = () => {
+  const fetchWithToken = useTokenContext()
   const navigate = useNavigate()
-
-  const { fetchUserPuzzles, puzzlesArray, isLoadingPuzzles, setIsLoadingPuzzles } = useContext(PuzzleContext)
-
+  const { isLoadingPuzzles, puzzlesArray, setPuzzlesArray, setIsLoadingPuzzles } = useContext(PuzzleContext)
   const [selectedPieces, setSelectedPieces] = useState([])
   const [showFilters, setShowFilters] = useState(false)
-
   const [selectedOption, setSelectedOption] = useState('all')
 
   const handleOptionChange = (event) => {
@@ -27,8 +26,25 @@ const MyPuzzles = () => {
 
   useEffect(() => {
     async function loadData() {
-      await fetchUserPuzzles()
-      setIsLoadingPuzzles(false)
+      try {
+        console.log('Fetching user puzzles')
+        const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles`, {
+          method: 'GET'
+        })
+        if (response.ok) {
+          const puzzles = await response.json()
+          console.log(puzzles)
+          setPuzzlesArray(puzzles)
+          setIsLoadingPuzzles(false)
+        } else if (response.status === 401) {
+          console.log('User is not authenticated')
+          navigate('/')
+        } else {
+          console.log('Could not fetch user puzzles')
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
     loadData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -158,7 +174,7 @@ const MyPuzzles = () => {
               </li>
             ))
             ) : (
-              <p>Inga pussel att visa</p>
+              <p id='no-puzzles'>Inga pussel att visa</p>
             )}
           </ul>
         )}
