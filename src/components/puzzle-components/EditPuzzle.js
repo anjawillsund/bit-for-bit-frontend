@@ -21,6 +21,9 @@ const EditPuzzle = () => {
       if (response.ok) {
         console.log('Puzzle deleted')
         navigate('/my-puzzles')
+      } else if (response.status === 401) {
+        console.log('User is not authenticated')
+        navigate('/')
       } else {
         console.log('Could not delete puzzle')
       }
