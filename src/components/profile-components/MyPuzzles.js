@@ -104,16 +104,16 @@ const MyPuzzles = () => {
           <div className='filter-field'>
             <fieldset id='lent-out-button-field' onChange={handleToggleLentOutFilter}>
               <div>
+                <input type="radio" id="all" name="lentOption" value="lentOption" checked={selectedOption === 'all'} onChange={handleOptionChange} />
+                <label for="all" className={`${lentOutFilter === 'all' ? 'active-option' : ''}`}>Alla</label>
+              </div>
+              <div>
                 <input type="radio" id="lent" name="lentOption" value="lent" checked={selectedOption === 'lent'} onChange={handleOptionChange} />
                 <label for="lent" className={`${lentOutFilter === 'lent' ? 'active-option' : ''}`}>Utlånade</label>
               </div>
               <div>
                 <input type="radio" id="notLent" name="lentOption" value="notLent" checked={selectedOption === 'notLent'} onChange={handleOptionChange} />
                 <label for="notLent" className={`${lentOutFilter === 'notLent' ? 'active-option' : ''}`}>Inte utlånade</label>
-              </div>
-              <div>
-                <input type="radio" id="all" name="lentOption" value="lentOption" checked={selectedOption === 'all'} onChange={handleOptionChange} />
-                <label for="all" className={`${lentOutFilter === 'all' ? 'active-option' : ''}`}>Alla</label>
               </div>
             </fieldset>
             <div id='pieces-number-filter'>
