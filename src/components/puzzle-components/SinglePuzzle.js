@@ -15,8 +15,15 @@ const SinglePuzzle = () => {
         // Simulate fetching puzzle data based on `puzzleId`
         const fetchPuzzle = async () => {
             const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles/${puzzleId}`)
-            const data = await response.json()
-            setPuzzle(data)
+            if (response.ok) {
+                const data = await response.json()
+                setPuzzle(data)
+            } else if (response.status === 401) {
+                console.log('User is not authenticated')
+                navigate('/')
+            } else {
+                navigate('/my-puzzles')
+            }
         }
 
         fetchPuzzle()
