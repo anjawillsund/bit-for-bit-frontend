@@ -105,6 +105,9 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
       if (response.ok) {
         navigate(navigateUrl)
         console.log('Puzzle added')
+      } else if (response.status === 401) {
+        console.log('Unauthorized')
+        navigate('/login')
       } else {
         const error = await response.json()
         const errorArray = error.message
@@ -123,7 +126,7 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
         <input type="file" name="image" onChange={handleChange} accept="image/*" className="styled-file-input" />
       </label>
       <label>
-        Titel
+        Titel<span className='red'>*</span>
         <input type="text" name="title" value={formData.title} onChange={handleChange} />
       </label>
       <label>
@@ -180,10 +183,6 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
           <input type="text" name="lentOutToString" value={formData.lentOutToString} onChange={handleChange} />
         </label>
       )}
-      <label>
-        Är privat
-        <input type="checkbox" name="isPrivate" checked={formData.isPrivate} onChange={handleChange} />
-      </label>
       {errors.length > 0 && (
       <div className='error-list'>
         <ul>
