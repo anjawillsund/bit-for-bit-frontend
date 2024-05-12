@@ -188,8 +188,8 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
         <ul>
           {errors.map((error, index) => (
             <li key={index}>
-              &#x1F9E9;
-              <span className='puzzle-point'>{error}</span>
+              <span className='bullet-point red'>*</span>
+              <span className='error-message'>{error}</span>
             </li>
           ))}
         </ul>
