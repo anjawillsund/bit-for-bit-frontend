@@ -10,16 +10,11 @@ import { useNavigate } from 'react-router-dom'
  * @returns {JSX.Element} The JSX element representing the StartPage component.
  */
 const StartPage = () => {
-
-  let location = useLocation()
+  const navigate = useNavigate()
+  const location = useLocation()
   const [message, setMessage] = useState('')
-
-  const { setIsUserActive, setPuzzles, setIsLoadingPuzzles } = useContext(PuzzleContext)
-
-  let navigate = useNavigate()
-
+  const { setIsLoadingPuzzles } = useContext(PuzzleContext)
   const [errorMessage, setErrorMessage] = useState('')
-
   const [state, setState] = useState({
     username: '',
     password: ''
@@ -69,7 +64,6 @@ const StartPage = () => {
    */
   const handleSubmit = async (event) => {
     event.preventDefault()
-    setPuzzles([])
     setIsLoadingPuzzles(true)
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
@@ -84,7 +78,6 @@ const StartPage = () => {
         })
       })
       if (response.ok) {
-        setIsUserActive(true)
         const token = await response.json()
         localStorage.setItem('token', token)
         navigate('/my-puzzles')
