@@ -24,11 +24,10 @@ const LogOut = () => {
 			const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/logout`, {
 				method: 'GET'
 			})
-			if (response.ok) {
-				resetState()
-				localStorage.removeItem('token')
-				navigate('/')
-			} else {
+			resetState()
+			localStorage.removeItem('token')
+			navigate('/')
+			if (!response.ok) {
 				const errorMessage = await response.text()
 				setErrorMessage(errorMessage)
 				console.log(errorMessage)
