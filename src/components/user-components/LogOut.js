@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TokenContext } from '../contexts/TokenContext.js'
 import { PuzzleContext } from '../contexts/PuzzleContext.js'
@@ -14,7 +14,6 @@ const LogOut = () => {
 	const navigate = useNavigate()
 	const fetchWithToken = useContext(TokenContext)
 	const { resetState } = useContext(PuzzleContext)
-	const [errorMessage, setErrorMessage] = useState('')
 
 	/**
 	 * Handles the logout action.
@@ -29,7 +28,6 @@ const LogOut = () => {
 			navigate('/')
 			if (!response.ok) {
 				const errorMessage = await response.text()
-				setErrorMessage(errorMessage)
 				console.log(errorMessage)
 			}
 		} catch (error) {
@@ -43,13 +41,6 @@ const LogOut = () => {
 				onClick={handleLogout}
 				imageSrc={logOut}
 			/>
-			<div>
-				{errorMessage ? (
-					<p className='system-message'>Kunde inte logga ut.</p>
-				) : (
-					null
-				)}
-			</div>
 		</div>
 	)
 }
