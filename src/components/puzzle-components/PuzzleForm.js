@@ -141,7 +141,7 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
       )}
       {!formData.complete && (
         <label>
-          Antal saknade bitar
+          Antal saknade bitar<span className='red'>*</span>
           <input type="text" name="missingPiecesNumber" value={formData.missingPiecesNumber} onChange={handleChange} />
         </label>
       )}
@@ -179,7 +179,7 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
       </label>
       {formData.isLentOut && (
         <label>
-          Utlånat till
+          Utlånat till<span className='red'>*</span>
           <input type="text" name="lentOutToString" value={formData.lentOutToString} onChange={handleChange} />
         </label>
       )}
