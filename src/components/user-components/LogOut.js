@@ -23,8 +23,10 @@ const LogOut = () => {
 			const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/logout`, {
 				method: 'GET'
 			})
+			// Reset the state and remove the token from the local storage.
 			resetState()
 			localStorage.removeItem('token')
+			// Redirect the user to the start page.
 			navigate('/')
 			if (!response.ok) {
 				const errorMessage = await response.text()
