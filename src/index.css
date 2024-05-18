@@ -1,14 +1,4 @@
 @font-face {
-  font-family: 'JigsawFont';
-  src: url('./assets/fonts/jigsaw-trouserdrop.regular.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'HandwritingFont';
-  src: url('./assets/fonts/reenie-beanie.regular.ttf') format('truetype');
-}
-
-@font-face {
   font-family: 'CoinyFont';
   src: url('./assets/fonts/coiny-regular.ttf') format('truetype');
 }
@@ -31,8 +21,6 @@
   background-position: center;
   background-repeat: no-repeat;
   overflow: auto;
-  /* padding-bottom: 30px; */
-  /* background-position: 20%; */
 }
 
 body {
@@ -43,7 +31,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #222222;
-  /* background-color: rgb(196, 224, 255); */
   align-items: center;
   justify-content: center;
   display: flex;
@@ -56,12 +43,10 @@ body {
   flex-direction: column;
   height: 100%;
   width: 100vw;
-  /* margin-bottom: 60px; */
 }
 
 .container {
   position: relative;
-  /* background-color: rgb(196, 224, 255); */
   height: 100%;
 }
 
@@ -72,7 +57,6 @@ body {
   height: 10%;
   margin: 10rem 0 2rem 0;
   position: relative;
-  /* background-color: rgb(255, 255, 255, 0.6); */
 }
 
 h1.logo {
@@ -92,11 +76,6 @@ h1.logo {
 }
 
 .start-page > .logo-container > .colorful-title {
-  /* background: linear-gradient(to bottom, rgb(205, 103, 0), rgb(255, 160, 17), rgb(251, 213, 90), rgb(255, 221, 120));
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text; */
-  /* color: white; */
   text-shadow: 2px 2px 3px rgb(201, 126, 14);
 }
 
@@ -108,25 +87,13 @@ h1.logo {
   transform: scaleY(1.4);
   text-shadow: 0px 2px 3px rgb(255, 160, 17, 0.5);
 }
-/* 
-#navigation-title .handwriting {
-  font-size: 2.5rem;
-  font-weight: 100;
-  padding: 0;
-  transform: scaleY(1.4);
-} */
 
 .green {
-  /* font-size: 1.5rem; */
-  /* vertical-align: sub; */
   color: rgb(82, 148, 16);
-  /* text-shadow: 1px 0px 1px #3e7a3e; */
 }
 
 .yellow {
-  /* font-size: 1.5rem; */
   color: rgb(219, 162, 3);
-  /* vertical-align: sub; */
 }
 
 .red {
@@ -141,16 +108,6 @@ h1.logo {
   color: rgb(3, 129, 157);
 }
 
-.jigsaw {
-  font-family: 'JigsawFont';
-}
-
-.handwriting {
-  font-family: 'HandwritingFont';
-  color: #fafafa;
-  font-size: 5rem;
-}
-
 .coiny {
   font-family: 'CoinyFont';
 }
@@ -161,10 +118,6 @@ h1.logo {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  /* background-image: url('./assets/images/background.jpg'); */
-  /* background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
 }
 
 .form-container h2 {
@@ -228,7 +181,6 @@ div.form-container {
   color: rgb(251, 137, 88, 0.9);
   font-weight: normal;
   margin: 8px 0 0 0;
-  /* height: 35px; */
   padding: 8px 0 6px 0;
   font-size: 1.2rem;
   font-family: 'ComfortaaFont', Arial, Helvetica, sans-serif;
@@ -257,7 +209,6 @@ div.form-container {
   font-weight: normal;
   color: rgba(44, 158, 145, 0.8);
   box-shadow: var(--create-user-shadow);
-  /* display: flex; */
   align-items: center;
   justify-content: center;
   flex-grow: 1;
@@ -318,20 +269,6 @@ div.form-container {
   font-size: 16px;
 }
 
-/* TODO: Fixa denna */
-.react-datepicker button[type="button"] {
-  content: "Välj datum";
-  background-color: #ff6666;
-  color: white;
-  border: none;
-  margin: 5px;
-  border-radius: 5px;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0.60);
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
 .puzzle-form .react-datepicker__input-container input[type=text] {
   margin-left: 10px;
 }
@@ -352,7 +289,6 @@ input[type=file]::file-selector-button {
   content: 'Välj bild';
   display: inline-block;
   background-image: var(--form-buttons);
-  /* background-color: rgb(69, 143, 230); */
   font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: white;
   border: none;
@@ -413,7 +349,6 @@ input[type=file]::file-selector-button {
   height: 60px;
   z-index: 2;
   background: linear-gradient(to bottom, rgb(255, 160, 17), rgb(251, 213, 90), rgb(255, 221, 120));
-  /* background-color: rgb(69, 143, 230); */
   display: flex;
   justify-content: center;
   align-items: center; 
@@ -467,18 +402,11 @@ input[type=file]::file-selector-button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* height: 100%; */
   height: 100vh;
   margin-top: 60px;
   margin-bottom: 0;
-  /* padding-bottom: 30px; */
-  /* background-color: rgb(196, 224, 255); */
-  /* background-image: url('./assets/images/background.jpg'); */
   background-color: transparent;
   border-radius: 5px;
-  /* background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
 }
 
 .puzzle-area {
@@ -486,7 +414,6 @@ input[type=file]::file-selector-button {
   flex-direction: column;
   align-items: center;
   justify-content: top;
-  /* height: 100%; */
   padding-bottom: 30px;
   margin-top: 10px;
   border-radius: 5px;
@@ -496,7 +423,6 @@ input[type=file]::file-selector-button {
   display: flex;
   justify-content: center;
   margin-top: 15px;
-  /* background-color: rgb(196, 224, 255); */
 }
 
 .puzzle-area Button {
@@ -552,7 +478,6 @@ button:active {
 /* Puzzles */
 .puzzles {
   width: 100%;
-  /* height: 100%; */
   overflow: auto;
   padding-bottom: 5%;
 }
@@ -595,7 +520,6 @@ button:active {
   display: flex;
   flex-direction: row;
   background-color: var(--transparent);
-  /* justify-content:space-evenly; */
   border-radius: 5px;
   padding: 10px 5px;
 }
@@ -701,7 +625,6 @@ fieldset div label.active-option {
 
 .puzzles ul li h3 {
   font-family: 'ComfortaaFont', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  /* color: rgb(3, 174, 212), rgb(4, 145, 176), rgb(0, 62, 76); */
   color: rgb(3, 129, 157);
   font-size: 1rem;
   margin: 0;
