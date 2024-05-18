@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import Button from '../Button.js'
 import { Link } from 'react-router-dom'
 
-// Code partially from https://www.freecodecamp.org/news/how-to-create-forms-in-react-using-react-hook-form/
-
 /**
  * Component for creating a user.
  *
@@ -13,7 +11,6 @@ import { Link } from 'react-router-dom'
 const CreateUser = () => {
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState('')
-
   const [state, setState] = useState({
     username: '',
     password: '',
@@ -60,9 +57,10 @@ const CreateUser = () => {
         const errorMessage = JSON.parse(errorText).message
         throw new Error(errorMessage)
       }
-        const message = await response.text()
-        const messageData = JSON.parse(message).message
-        navigate('/', { state: { message: messageData } })
+      // If the user is created successfully, redirect them to the start page.
+      const message = await response.text()
+      const messageData = JSON.parse(message).message
+      navigate('/', { state: { message: messageData } })
     } catch (error) {
       setErrorMessage(error.message)
     }
@@ -111,7 +109,7 @@ const CreateUser = () => {
           </form>
           <Link to='/'><Button buttonText='Tillbaka till startsidan' /></Link>
           <div>
-            {errorMessage ? (
+            {errorMessage ? ( // If there is an error message, display it.
               <p className='system-message'>{errorMessage}</p>
             ) : (
               null
