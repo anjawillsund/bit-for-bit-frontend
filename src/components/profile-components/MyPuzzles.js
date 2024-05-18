@@ -27,23 +27,21 @@ const MyPuzzles = () => {
   useEffect(() => {
     async function loadData() {
       try {
-        console.log('Fetching user puzzles')
         const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles`, {
           method: 'GET'
         })
         if (response.ok) {
           const puzzles = await response.json()
-          console.log(puzzles)
           setPuzzlesArray(puzzles)
           setIsLoadingPuzzles(false)
         } else if (response.status === 401) {
-          console.log('User is not authenticated')
           navigate('/')
         } else {
-          console.log('Could not fetch user puzzles')
+          throw new Error(`Server responded with status: ${response.status}`)
         }
       } catch (error) {
-        console.log(error)
+        console.error('Error fetching puzzles:', error)
+        setIsLoadingPuzzles(false)
       }
     }
     loadData()
