@@ -1,12 +1,56 @@
-# Getting Started with Create React App
+# Bit För Bit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bit För Bit is a React-based web application that allows users to manage their puzzle collection online. Users can add, edit, view, and delete puzzles in their collection. It also supports user authentication, including signup and login functionalities.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+Before you begin, ensure you have met the following requirements:
+- Node.js installed on your system.
+- npm or yarn as your package manager.
+- Access to a MongoDB instance for database services.
+- A modern web browser that supports JavaScript and React applications.
 
-### `npm start`
+## Installation
+
+To install "Bit För Bit", follow these steps:
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/yourgithub/bit-for-bit.git
+   cd bit-for-bit
+   ```
+
+2. **Install dependencies**
+
+   Navigate to the project directory and install the required dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. **Environment Variables**
+
+   Create a `.env` file in the root directory and update it with your specific settings:
+
+   ```plaintext
+   REACT_APP_API_URL=http://your-server/api
+   ```
+
+## Running the Application
+
+To run the application, execute the following command:
+```bash
+npm run build
+```
+This builds the application for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+To run "Bit För Bit", execute the following command:
+
+```bash
+npm start
+```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -14,57 +58,36 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **User Authentication**: Sign up for an account, log in, and log out functionalities.
+- **Manage Puzzles**: Add new puzzles to your collection, edit existing details, or remove them.
+- **View Puzzle Details**: Click on any puzzle to view detailed information about it.
 
-### `npm run build`
+## Components Overview
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Here's a brief overview of the main components:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **`StartPage.js`**: The landing page where users can log in or navigate to the signup page.
+- **`CreateUser.js`**: Allows new users to create an account.
+- **`LogOut.js`**: Handles user logout functionality.
+- **`AddPuzzle.js`, `EditPuzzle.js`**: Components for adding and editing puzzles.
+- **`SinglePuzzle.js`**: Displays detailed information about a single puzzle.
+- **`MyPuzzles.js`**: Lists all puzzles in the user's collection.
+- **`Navigation.js`**: Provides navigation links and logout button.
+- **`PuzzleForm.js`**: Reusable form used for both adding and editing puzzle details.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing to Bit För Bit
+The boiler plate code in this project is from the application "PixFlixr" that was developed by Anja Willsund during the course 1DV613 Software Development Project.\
+Contributions to the "Bit För Bit" project are welcome. If you have suggestions or improvements, please fork the repository and submit a pull request.
 
-### `npm run eject`
+The credit for the icons used in the application goes to the following people:\
+Log out icon - Pixel perfect at [Flaticon](https://www.flaticon.com/free-icon/logout_1828427?term=logout&page=1&position=2&origin=tag&related_id=1828427)\
+Filter icon - Freepik at [Flaticon](https://www.flaticon.com/free-icon/logout_1828427?term=logout&page=1&position=2&origin=tag&related_id=1828427)\
+Default puzzle image - Mel Poole at [Unsplash](https://unsplash.com/photos/white-and-black-hearts-illustration-eo5Hrzyb4D0)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
+Distributed under the MIT License. See `LICENSE` for more information.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Please adjust the repository URL and any other specific details according to your project's actual setup. If you have specific sections or details you'd like to add or modify, let me know! If you want more information about this project and how it was developed, please visit the project's [Wiki](https://github.com/aw22hs/bit-for-bit/wiki).
