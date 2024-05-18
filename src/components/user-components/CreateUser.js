@@ -65,7 +65,6 @@ const CreateUser = () => {
         navigate('/', { state: { message: messageData } })
     } catch (error) {
       setErrorMessage(error.message)
-      console.log('Could not create user')
     }
   }
 
