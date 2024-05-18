@@ -13,6 +13,10 @@ const EditPuzzle = () => {
   const { puzzle } = location.state || {}
   const fetchWithToken = useContext(TokenContext)
 
+  /**
+   * Deletes a puzzle from the database.
+   * @param {string} id - The id of the puzzle to delete.
+   */
   const handleClickDelete = async (id) => {
     try {
       const response = await fetchWithToken(`${process.env.REACT_APP_API_URL}/my/puzzles/${id}`, {
