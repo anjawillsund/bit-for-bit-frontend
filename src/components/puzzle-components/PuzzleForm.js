@@ -64,7 +64,6 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
                 type: 'image/png'
               })
               resolve(resizedFile)
-              console.log(resizedFile)
               // handle the uploading of resizedFile here
             },
             'image/png', 1)
@@ -104,18 +103,15 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
       })
       if (response.ok) {
         navigate(navigateUrl)
-        console.log('Puzzle added')
       } else if (response.status === 401) {
-        console.log('Unauthorized')
-        navigate('/login')
+        navigate('/')
       } else {
         const error = await response.json()
         const errorArray = error.message
         setErrors(errorArray)
-        console.log('Could not add puzzle')
       }
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
