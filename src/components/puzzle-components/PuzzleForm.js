@@ -111,7 +111,7 @@ const PuzzleForm = ({ fetchUrl, method, navigateUrl, buttonText }) => {
         setErrors(errorArray)
       }
     } catch (error) {
-      console.error(error)
+      console.error('Error adding puzzle: ', error)
     }
   }
 

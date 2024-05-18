@@ -28,10 +28,10 @@ const LogOut = () => {
 			navigate('/')
 			if (!response.ok) {
 				const errorMessage = await response.text()
-				console.log(errorMessage)
+				throw new Error(errorMessage)
 			}
 		} catch (error) {
-			console.log(error)
+			console.error('Error logging out:', error)
 		}
 	}
 
