@@ -43,7 +43,7 @@ function App() {
                   </div>
                 </div>
               </>
-            : <Navigate to='/' />} />
+              : <Navigate to='/' />} />
           </Routes>
         </div>
       </PuzzleContextProvider>
