@@ -83,11 +83,10 @@ const StartPage = () => {
         navigate('/my-puzzles')
       } else {
         const errorMessage = await response.text()
-        console.log(errorMessage)
-        setErrorMessage(JSON.parse(errorMessage).message)
+        throw new Error (JSON.parse(errorMessage).message)
       }
     } catch (error) {
-      console.log(error)
+      setErrorMessage(error.message)
     }
   }
 
