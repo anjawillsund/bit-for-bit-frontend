@@ -1,9 +1,7 @@
 import Button from './Button'
-import { Link } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useContext } from 'react'
 import { PuzzleContext } from './contexts/PuzzleContext'
-import { useNavigate } from 'react-router-dom'
 
 /**
  * The start page component that allows users to log in or create a new account.
@@ -78,12 +76,14 @@ const StartPage = () => {
         })
       })
       if (response.ok) {
+        // If the login is successful, store the token in local storage and redirect the user to the my-puzzles page.
         const token = await response.json()
         localStorage.setItem('token', token)
         navigate('/my-puzzles')
       } else {
+        // If the login is unsuccessful, display an error message.
         const errorMessage = await response.text()
-        throw new Error (JSON.parse(errorMessage).message)
+        throw new Error(JSON.parse(errorMessage).message)
       }
     } catch (error) {
       setErrorMessage(error.message)
@@ -127,14 +127,14 @@ const StartPage = () => {
           <Button className='create-account' buttonText='Skapa nytt konto' />
         </Link>
         <div>
-          {message ? (
+          {message ? ( // If a message exists, display it; otherwise, display nothing
             <p className='system-message'>{message}</p>
           ) : (
             null
           )}
         </div>
         <div>
-          {errorMessage ? (
+          {errorMessage ? ( // If an error message exists, display it; otherwise, display nothing
             <p className='system-message'>{errorMessage}</p>
           ) : (
             null
